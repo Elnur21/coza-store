@@ -1,0 +1,8 @@
+.scrollTop{
+    transform: rotate(-90deg);
+    cursor: pointer;
+    transition-duration: 1000ms;
+}
+.scrollTop:hover{
+    opacity: 1 !important;
+}

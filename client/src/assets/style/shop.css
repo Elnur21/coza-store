@@ -1,0 +1,14 @@
+.cardButton {
+    left: 25%;
+    top: 60%;
+    display: none;
+}
+
+.buttonHover:hover button {
+    display: block !important;
+}
+
+.cardButton:hover {
+    background-color: black !important;
+    color: white !important;
+}
