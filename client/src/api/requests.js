@@ -1,13 +1,14 @@
-import nextId from "react-id-generator";
+// import nextId from "react-id-generator";
 import { baseUrl } from "./base_url";
-import { userData } from "../data/data";
+import axios from "axios";
 
 export const fetchData = async () => {
-  try {
-    const response = await fetch(baseUrl);
-    const json = await response.json();
-    return json;
-  } catch (error) {
-    console.log("error", error);
-  }
+  return axios
+    .get(baseUrl)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
