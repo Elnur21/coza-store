@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from '../../components/head/Header'
-import headBack1 from "../../assets/image/headBack1.webp"
+import Header from '../../../components/head/Header'
+import headBack1 from "../../../assets/image/headBack1.webp"
 import BlogArticle from './BlogArticle'
-import article1 from "../../assets/image/article1.jfif"
-import article2 from "../../assets/image/article2.jfif"
-import article3 from "../../assets/image/article3.jfif"
+import article1 from "../../../assets/image/article1.jfif"
+import article2 from "../../../assets/image/article2.jfif"
+import article3 from "../../../assets/image/article3.jfif"
 import { Link } from 'react-router-dom'
 import BlogRightPart from './BlogRightPart'
 export default function Blog() {

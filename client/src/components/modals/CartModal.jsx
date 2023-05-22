@@ -1,11 +1,11 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import Featured from "../../pages/blog/Featured";
 import cartModal1 from "../../assets/image/cartModal1.webp";
 import cartModal2 from "../../assets/image/cartModal2.webp";
 import cartModal3 from "../../assets/image/cartModal3.webp";
 import Button from "../buttons/Button";
+import Featured from "../../pages/user/blog/Featured";
 export default function CartModal(props) {
   return (
     <div

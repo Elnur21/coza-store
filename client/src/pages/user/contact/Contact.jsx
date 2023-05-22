@@ -1,14 +1,14 @@
 import { faEnvelope, faLocationPin, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
-import Header from '../../components/head/Header'
-import headBack2 from "../../assets/image/headBack2.webp"
+import Header from '../../../components/head/Header'
+import headBack2 from "../../../assets/image/headBack2.webp"
 import ContactInfo from './ContactInfo'
 import swal from 'sweetalert';
-import "../../assets/style/googleMap.css"
+import "../../../assets/style/googleMap.css"
 export default function Contact() {
     const [characterLength, setCharacterLength] = useState("");
-    const [emailRequired, setEmailRequired] = useState(true);
+    const emailRequired = true;
     const sweetAlert = (e) => {
         swal({
             title: "Good job!",
@@ -39,7 +39,7 @@ export default function Contact() {
                     </div>
                 </div>
             </div><br /><br /><br /><br /><br />
-            <div className="mapouter"><div className="gmap_canvas"><iframe className="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=University of Oxford&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.kokagames.com/fnf-friday-night-funkin-mods/">FNF Mods</a></div></div>
+            <div className="mapouter"><div className="gmap_canvas"><iframe title='unique' className="gmap_iframe" frameborder="0" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=University of Oxford&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.kokagames.com/fnf-friday-night-funkin-mods/">FNF Mods</a></div></div>
         </section>
     )
 }

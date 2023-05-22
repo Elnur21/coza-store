@@ -1,26 +1,26 @@
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
-import Dashboard from "./pages/home/Dashboard";
 import {
   Routes,
   Route,
 } from "react-router-dom";
-import Blog from "./pages/blog/Blog";
-import Contact from "./pages/contact/Contact";
-import About from "./pages/about/About";
-import BlogContent from "./pages/blog/BlogContent";
-import Features from "./pages/features/Features";
 import alertify from 'alertifyjs';
 import ScrollTop from "./components/common/ScrollTop";
 import "../src/assets/style/main.css"
 import "../src/assets/style/responsive.css"
 import SearchModal from "./components/modals/SearchModal"
-import Shop from "./pages/shop/Shop";
 import CartModal from "./components/modals/CartModal";
 import LikeModal from "./components/modals/LikeModal";
 import { useEffect, useState } from "react";
 import NotFound from "./components/notFound/NotFound";
 import nextId from "react-id-generator";
+import Dashboard from "./pages/user/home/Dashboard";
+import Blog from "./pages/user/blog/Blog";
+import BlogContent from "./pages/user/blog/BlogContent";
+import Contact from "./pages/user/contact/Contact";
+import About from "./pages/user/about/About";
+import Features from "./pages/user/features/Features";
+import Shop from "./pages/user/shop/Shop";
 
 function App() {
   const [searchModal, setSearchModal] = useState(true);

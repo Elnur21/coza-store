@@ -2,9 +2,9 @@ import React from 'react'
 import Banner from './Banner'
 import SlideShow from './SlideShow'
 
-import man_banner from "../../assets/image/man-banner.webp"
-import woman_banner from "../../assets/image/women-banner.webp"
-import accesories_banner from "../../assets/image/accesories-banner.webp"
+import man_banner from "../../../assets/image/man-banner.webp"
+import woman_banner from "../../../assets/image/women-banner.webp"
+import accesories_banner from "../../../assets/image/accesories-banner.webp"
 import Shop from '../shop/Shop'
 export default function Dashboard(props) {
   return (

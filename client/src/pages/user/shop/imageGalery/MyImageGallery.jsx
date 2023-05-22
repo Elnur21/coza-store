@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import productDetail1 from  "../../../assets/image/product-detail-01.jpg.webp"
-import productDetail2 from  "../../../assets/image/product-detail-02.jpg.webp"
-import productDetail3 from  "../../../assets/image/product-detail-03.jpg.webp"
+import productDetail1 from  "../../../../assets/image/product-detail-01.jpg.webp"
+import productDetail2 from  "../../../../assets/image/product-detail-02.jpg.webp"
+import productDetail3 from  "../../../../assets/image/product-detail-03.jpg.webp"
 
 class MyImageGallery extends Component {
 
