@@ -1,3 +1,4 @@
+import NotFound from '../components/notFound/NotFound'
 import AdminRoot from '../pages/admin/AdminRoot'
 import ADashboard from '../pages/admin/home/ADashboard'
 import MainRoot from '../pages/user/MainRoot'
