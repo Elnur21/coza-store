@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import FeatureTableContent from "./FeatureTableContent";
-import table1 from "../../assets/image/table1.webp";
-import table2 from "../../assets/image/table2.webp";
+import table1 from "../../../assets/image/table1.webp";
+import table2 from "../../../assets/image/table2.webp";
 export default function Features(props) {
   return (
     <div>

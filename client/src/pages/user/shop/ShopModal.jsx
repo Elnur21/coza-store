@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { faClose, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MyImageGallery from "./imageGalery/MyImageGallery";
-import Button from "../../components/buttons/Button";
 import { Link } from "react-router-dom";
 import { faFacebookF, faGooglePlusG, faTwitter } from "@fortawesome/free-brands-svg-icons";
 export default function ShopModal(props) {

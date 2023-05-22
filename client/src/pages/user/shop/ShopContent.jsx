@@ -1,7 +1,7 @@
 import React from "react";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../../assets/style/shop.css";
+import "../../../assets/style/shop.css";
 import ShopModal from "./ShopModal";
 import { useState } from "react";
 import { faHeartCircleCheck } from "@fortawesome/free-solid-svg-icons";

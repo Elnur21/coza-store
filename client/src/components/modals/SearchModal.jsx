@@ -2,8 +2,8 @@ import { faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useState } from "react";
-import ShopContent from "../../pages/shop/ShopContent";
-import { userData } from "../data/data";
+import ShopContent from "../../pages/user/shop/ShopContent";
+import { userData } from "../../data/data";
 
 export default function SearchModal(props) {
   const [userDatas, setUserDatas] = useState(userData);

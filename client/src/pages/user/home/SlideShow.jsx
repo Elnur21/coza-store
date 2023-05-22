@@ -3,12 +3,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
-import "../../assets/style/swiper.css"
+import "../../../assets/style/swiper.css"
 import { EffectFade, Autoplay, Navigation } from 'swiper';
 import SlideContent from './SlideContent';
-import slide1 from "../../assets/image/slide1.webp"
-import slide2 from "../../assets/image/slide2.webp"
-import slide3 from "../../assets/image/slide3.webp"
+import slide1 from "../../../assets/image/slide1.webp"
+import slide2 from "../../../assets/image/slide2.webp"
+import slide3 from "../../../assets/image/slide3.webp"
 export default function SlideShow() {
   return (
     <>

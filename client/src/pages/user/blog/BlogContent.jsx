@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import article1 from "../../assets/image/article1.jfif"
+import article1 from "../../../assets/image/article1.jfif"
 import BlogRightPart from './BlogRightPart'
 
 export default function BlogContent() {
