@@ -1,7 +1,7 @@
 import React from 'react'
-import featured1 from "../../assets/image/featureed1.webp"
-import featured2 from "../../assets/image/featured2.webp"
-import featured3 from "../../assets/image/featured3.webp"
+import featured1 from "../../../assets/image/featureed1.webp"
+import featured2 from "../../../assets/image/featured2.webp"
+import featured3 from "../../../assets/image/featured3.webp"
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'

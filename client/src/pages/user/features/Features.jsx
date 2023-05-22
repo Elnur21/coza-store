@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import FeatureTableContent from "./FeatureTableContent";
-import table1 from "../../assets/image/table1.webp";
-import table2 from "../../assets/image/table2.webp";
-export default function Features(props) {
+import table1 from "../../../assets/image/table1.webp";
+import table2 from "../../../assets/image/table2.webp";
+import { CardContext } from '../../../context/CardContext';
+
+export default function Features() {
+  const { myData } = useContext(CardContext);
   return (
     <div>
       <section className="d-flex justify-content-center mt-5 flex-wrap">
@@ -44,7 +47,7 @@ export default function Features(props) {
                     imgName="Lightweight Jacket"
                     price="16"
                   />
-                  {props.myData.map((cartItem) => (
+                  {myData.map((cartItem) => (
                     <FeatureTableContent
                       key={cartItem.id}
                       tableImage={cartItem.image}
@@ -86,10 +89,10 @@ export default function Features(props) {
               <div className="col-lg-7">
                 $
                 {79.65 +
-                  (props.myData.length > 0
-                    ? props.myData
-                        .map((datum) => parseFloat(datum.price))
-                        .reduce((a, b) => a + b)
+                  (myData.length > 0
+                    ? myData
+                      .map((datum) => parseFloat(datum.price))
+                      .reduce((a, b) => a + b)
                     : 0.0)}
               </div>
             </p>
@@ -141,10 +144,10 @@ export default function Features(props) {
               <div className="col-lg-7">
                 $
                 {79.65 +
-                  (props.myData.length > 0
-                    ? props.myData
-                        .map((datum) => parseFloat(datum.price))
-                        .reduce((a, b) => a + b)
+                  (myData.length > 0
+                    ? myData
+                      .map((datum) => parseFloat(datum.price))
+                      .reduce((a, b) => a + b)
                     : 0.0)}
               </div>
             </p>{" "}

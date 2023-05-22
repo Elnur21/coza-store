@@ -1,7 +1,7 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import Featured from "../../pages/blog/Featured";
+import Featured from "../../pages/user/blog/Featured";
 export default function CartModal(props) {
   return (
     <div

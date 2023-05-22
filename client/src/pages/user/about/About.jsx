@@ -1,9 +1,9 @@
 import React from 'react'
-import Header from '../../components/head/Header'
-import headBack2 from "../../assets/image/headBack2.webp"
-import about1 from "../../assets/image/about1.jfif"
-import about2 from "../../assets/image/about2.webp"
-import "../../assets/style/about.css"
+import Header from '../../../components/head/Header'
+import headBack2 from "../../../assets/image/headBack2.webp"
+import about1 from "../../../assets/image/about1.jfif"
+import about2 from "../../../assets/image/about2.webp"
+import "../../../assets/style/about.css"
 export default function About() {
     return (
         <section>
