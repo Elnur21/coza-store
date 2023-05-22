@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Banner from './Banner'
 import SlideShow from './SlideShow'
 
@@ -6,7 +6,9 @@ import man_banner from "../../../assets/image/man-banner.webp"
 import woman_banner from "../../../assets/image/women-banner.webp"
 import accesories_banner from "../../../assets/image/accesories-banner.webp"
 import Shop from '../shop/Shop'
-export default function Dashboard(props) {
+
+
+export default function Dashboard() {
   return (
     <div>
       <SlideShow />
@@ -20,7 +22,7 @@ export default function Dashboard(props) {
       <div className='shop d-flex align-items-center flex-column mt-5 pt-5'>
         <h2 className='w-75 fw-bold'>PRODUCT OVERVIEW</h2>
       </div>
-      <Shop addToCart={props.addToCart} basicData={props.basicData} addToLike={props.addToLike} likes={props.likes} setLikes={props.setLikes}/>
+      <Shop />
     </div>
   )
 }
