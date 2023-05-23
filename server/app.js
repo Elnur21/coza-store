@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 
 const cardRoutes = require("./routes/cardRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
+const userRoutes = require("./routes/userRoutes");
+
 
 // variables
 const port = 8080;
@@ -37,9 +39,7 @@ app.use(express.json());
 // routes
 app.use("/", cardRoutes);
 app.use("/category", categoryRoutes);
-// app.use("/user", userRoutes);
-
-
+app.use("/user", userRoutes);
 
 // Start the server on port 8080
 app.listen(port, () => {

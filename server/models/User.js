@@ -1,11 +1,15 @@
-import { Schema, model } from "mongoose";
-import { hash as _hash } from "bcrypt";
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
-const UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
+    trim: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
     trim: true,
   },
   email: {
@@ -23,20 +27,26 @@ const UserSchema = new Schema({
     enum: ["user", "admin"],
     default: "user",
   },
-  cards: [
+  cart: [
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Card",
     },
   ],
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Card",
+    },
+  ]
 });
 UserSchema.pre("save", function (next) {
   if (!this.isModified("password")) return next();
-  _hash(this.password, 10, (error, hash) => {
+  bcrypt.hash(this.password, 10, (error, hash) => {
     this.password = hash;
     next();
   });
 });
-const User = model("User", UserSchema);
+const User = mongoose.model("User", UserSchema);
 
-export default User;
+module.exports = User;

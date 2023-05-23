@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { fetchData } from '../api/requests';
+import { getCards } from '../api/requests';
 import nextId from "react-id-generator";
 
 const CardContext = createContext();
@@ -16,7 +16,7 @@ const CardContextProvider = ({ children }) => {
   };
   const [basicData, setBasicData] = useState([]);
   useEffect(() => {
-    fetchData()
+    getCards()
       .then(data => {
         setBasicData(data)
       });
