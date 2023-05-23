@@ -1,20 +1,19 @@
 import { faClose, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import ShopContent from "../../pages/user/shop/ShopContent";
-import { userData } from "../../data/data";
+import { CardContext } from "../../context/CardContext";
 
 export default function SearchModal(props) {
-  const [userDatas, setUserDatas] = useState(userData);
+  const { basicData, toggleModalSearch } = useContext(CardContext);
+  const [shopDatas, setShopDatas] = useState(basicData);
   const [character, setCharacter] = useState("");
   const onSearchHandleChange = (value) => {
-    const newData = userData.filter((order) =>
-      // user.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()) // only name search
-
+    const newData = basicData.filter((order) =>
       order.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
     );
-    setUserDatas(newData);
+    setShopDatas(newData);
   };
   return (
     <div
@@ -29,7 +28,7 @@ export default function SearchModal(props) {
         <div className="d-flex justify-content-end w-50">
           <button
             className="btn shadow-none fs-3 opacity-50"
-            onClick={props.click}
+            onClick={toggleModalSearch}
           >
             <FontAwesomeIcon icon={faClose} />
           </button>
@@ -43,12 +42,12 @@ export default function SearchModal(props) {
             // value={character}
             placeholder="Search"
             className="btn bg-white text-start border rounded-0 rounded-square border-start-0 shadow-none p-3 w-100 bg-white fs-1"
-            onChange={(e) => {onSearchHandleChange(e.target.value); setCharacter(e.target.value.length)}}
+            onChange={(e) => { onSearchHandleChange(e.target.value); setCharacter(e.target.value.length) }}
           />
         </div>
         {character ? (
           <div className="d-flex gap-2 w-100">
-            {userDatas.map((order) => (
+            {shopDatas.map((order) => (
               <ShopContent
                 key={order.id}
                 cardImage={order.image}
