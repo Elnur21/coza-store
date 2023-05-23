@@ -21,7 +21,7 @@ export default function Shop() {
     setOpen(!open);
   };
   const [shopDatas, setShopDatas] = useState([]);
-  useEffect(()=>{
+  useEffect(() => {
     setShopDatas(basicData);
   })
   const onSearchHandleChange = (value) => {
@@ -38,7 +38,7 @@ export default function Shop() {
     "Shoes",
     "Watches",
   ]);
-  if (basicData.length == 0) {
+  if (!basicData) {
     return <div>loading...</div>
   }
   return (
@@ -312,10 +312,9 @@ export default function Shop() {
         <br />
         <br />
         <br />
-        {console.log(basicData.length)}
         <div className="row">
-          {
-            selectedTab === "all" ? shopDatas.map((order) => (
+          {shopDatas.length == 0 ? <div className="col-12 text-center">There are not any products</div> :
+            (selectedTab === "all" ? shopDatas.map((order) => (
               <ShopContent
                 colClasses=" col-lg-3 col-md-4 col-sm-6"
                 key={order.id}
@@ -344,7 +343,7 @@ export default function Shop() {
                     myOrder={order}
                   />
                 </TabPanel>
-              ))
+              )))
           }
         </div>
 
