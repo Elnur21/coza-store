@@ -29,6 +29,7 @@
     "react-scripts": "5.0.1",
     "react-tabs": "^5.1.0",
     "reactstrap": "^9.1.1",
+    "socket.io-client": "^4.6.1",
     "sweetalert": "^2.1.2",
     "swiper": "^8.2.6",
     "web-vitals": "^2.1.4"

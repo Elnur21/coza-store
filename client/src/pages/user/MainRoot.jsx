@@ -24,20 +24,13 @@ const MainRoot = () => {
     <div>
       <Navbar />
       <SearchModal
-        click={toggleModalSearch}
         classSearch={searchModal ? "modalTop" : " "}
       />
       <CartModal
-        click={toggleModalCart}
         cartClass={cartModal ? "modalRightt" : " "}
-        cart={myData}
-        removeFromCart={removeFromCart}
       />
       <LikeModal
-        click={toggleModalLike}
         cartClass={likeModal ? "modalRightt" : " "}
-        cart={myLike}
-        removeFromLike={removeFromLike}
       />
       <Outlet />
       <Footer />
