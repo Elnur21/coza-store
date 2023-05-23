@@ -14,8 +14,8 @@ exports.getAllCategories = async (req, res) => {
 };
 exports.createCategory = async (req, res) => {
   try {
-    const Category = await Category.create(req.body);
-    res.status(201).json(Category);
+    const category = await Category.create(req.body);
+    res.status(201).json(category);
   } catch (error) {
     res.status(400).json({
       status: "fail",

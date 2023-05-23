@@ -1,7 +1,12 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const CategorySchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
   dateCreated: {
     type: Date,
     default: Date.now,
@@ -10,4 +15,4 @@ const CategorySchema = new mongoose.Schema({
 
 const Category = mongoose.model("Category", CategorySchema);
 
-export default Category;
+module.exports = Category;
