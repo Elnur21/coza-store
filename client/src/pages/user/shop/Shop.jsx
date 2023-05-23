@@ -1,8 +1,7 @@
 import { faClose, faFilter, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ShopContent from "./ShopContent";
-// import ShopModal from "./ShopModal";
 import { Link } from "react-router-dom";
 import { Collapse } from "react-collapse";
 import { useState } from "react";
@@ -21,14 +20,15 @@ export default function Shop() {
   const onItemClick2 = () => {
     setOpen(!open);
   };
-  const [userDatas, setUserDatas] = useState(basicData);
+  const [shopDatas, setShopDatas] = useState([]);
+  useEffect(()=>{
+    setShopDatas(basicData);
+  })
   const onSearchHandleChange = (value) => {
     const newData = basicData.filter((order) =>
-      // user.name.toLocaleLowerCase().includes(value.toLocaleLowerCase()) // only name search
-
       order.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
     );
-    setUserDatas(newData);
+    setShopDatas(newData);
   };
   const [selectedTab, setSelectedTab] = useTabs([
     "all",
@@ -38,6 +38,9 @@ export default function Shop() {
     "Shoes",
     "Watches",
   ]);
+  if (basicData.length == 0) {
+    return <div>loading...</div>
+  }
   return (
     <div className="d-flex justify-content-center">
       <div className="w-75">
@@ -309,42 +312,42 @@ export default function Shop() {
         <br />
         <br />
         <br />
-        {
-          basicData.length == 0 ? <div>loading...</div> : <div className="row">
-            {
-              selectedTab === "all" ? userDatas.map((order) => (
-                <ShopContent
-                  colClasses=" col-lg-3 col-md-4 col-sm-6"
-                  key={order.id}
-                  cardImage={order.image}
-                  cardTitle={order.name}
-                  cardPrice={order.price}
-                  addToCart={() => addToCart(order)}
-                  addToLike={() => addToLike(order)}
-                  likes={likes}
-                  setLikes={setLikes}
-                  myOrder={order}
-                />
-              )) :
-                userDatas.map((order) => (
-                  <TabPanel hidden={selectedTab !== order.value} className=" col-lg-3 col-md-4 col-sm-6 border-0">
-                    <ShopContent
-                      colClasses=" col-12"
-                      key={order.id}
-                      cardImage={order.image}
-                      cardTitle={order.name}
-                      cardPrice={order.price}
-                      addToCart={() => addToCart(order)}
-                      addToLike={() => addToLike(order)}
-                      likes={likes}
-                      setLikes={setLikes}
-                      myOrder={order}
-                    />
-                  </TabPanel>
-                ))
-            }
-          </div>
-        }
+        {console.log(basicData.length)}
+        <div className="row">
+          {
+            selectedTab === "all" ? shopDatas.map((order) => (
+              <ShopContent
+                colClasses=" col-lg-3 col-md-4 col-sm-6"
+                key={order.id}
+                cardImage={order.image}
+                cardTitle={order.name}
+                cardPrice={order.price}
+                addToCart={() => addToCart(order)}
+                addToLike={() => addToLike(order)}
+                likes={likes}
+                setLikes={setLikes}
+                myOrder={order}
+              />
+            )) :
+              shopDatas.map((order) => (
+                <TabPanel hidden={selectedTab !== order.value} className=" col-lg-3 col-md-4 col-sm-6 border-0">
+                  <ShopContent
+                    colClasses=" col-12"
+                    key={order.id}
+                    cardImage={order.image}
+                    cardTitle={order.name}
+                    cardPrice={order.price}
+                    addToCart={() => addToCart(order)}
+                    addToLike={() => addToLike(order)}
+                    likes={likes}
+                    setLikes={setLikes}
+                    myOrder={order}
+                  />
+                </TabPanel>
+              ))
+          }
+        </div>
+
 
         <br />
         <br />

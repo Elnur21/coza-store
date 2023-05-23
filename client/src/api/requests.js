@@ -3,7 +3,7 @@ import { baseUrl } from "./base_url";
 import axios from "axios";
 
 export const fetchData = async () => {
-  return axios
+  return await axios
     .get(baseUrl)
     .then((response) => {
       return response.data;

@@ -2,7 +2,6 @@
 const express = require("express");
 const cors = require("cors");
 const body_parser = require("body-parser");
-const fs = require("fs");
 const userData = require("./data/data");
 
 // variables

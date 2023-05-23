@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { fetchData } from '../api/requests';
-import alertify from 'alertifyjs';
 import nextId from "react-id-generator";
 
 const CardContext = createContext();
@@ -40,7 +39,6 @@ const CardContextProvider = ({ children }) => {
   }
   const removeFromCart = (data, mydata) => {
     setMyData(mydata.filter(deck => deck.id !== data.id));
-    alertify.error(data.name + " removed to cart!")
   }
   const [likeModal, setLikeModal] = useState(true);
   const toggleModalLike = () => {
@@ -65,7 +63,6 @@ const CardContextProvider = ({ children }) => {
   const removeFromLike = (data, mydata) => {
     setMyLike(mydata.filter(deck => deck.id !== data.id));
     console.log(myLike)
-    alertify.error(data.name + " removed to cart!")
   }
 
 
