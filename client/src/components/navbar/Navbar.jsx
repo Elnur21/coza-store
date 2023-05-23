@@ -51,7 +51,7 @@ export default function Navbar(props) {
                                 <div className='col-lg-4 '>
                                     <ul type="none" className='d-flex mb-3 px-3'>
                                         <li className='py-2 border-0 border-start border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">Help & FAQs</Link></li>
-                                        <li className='py-2 border-0 border-start border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">My Account</Link></li>
+                                        <li className='py-2 border-0 border-start border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/login">My Account</Link></li>
                                         <li className='py-2 border-0 border-start border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">EN</Link></li>
                                         <li className='py-2 border-0 border-start border-end border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">USD</Link></li>
                                     </ul>
@@ -78,7 +78,7 @@ export default function Navbar(props) {
                         <div className='col-lg-4 '>
                             <ul type="none" className='d-flex m-0'>
                                 <li className='py-2 border border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">Help & FAQs</Link></li>
-                                <li className='py-2 border border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">My Account</Link></li>
+                                <li className='py-2 border border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/login">My Account</Link></li>
                                 <li className='py-2 border border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">EN</Link></li>
                                 <li className='py-2 border border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">USD</Link></li>
                             </ul>
