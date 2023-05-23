@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const bcrypt = require("bcrypt");
 
 exports.getAllUsers = async (req, res) => {
   try {
@@ -64,4 +65,38 @@ exports.updateUser = async (req, res) => {
       error,
     });
   }
+};
+
+exports.loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (user) {
+      bcrypt.compare(password, user.password, (err, same) => {
+        if (err) {
+          return res.status(500).json({
+            status: "error",
+            message: "Error comparing passwords",
+          });
+        }
+        if (same) {
+          req.session.userID = user._id;
+          return res.status(200).send("log in success");
+        }
+        res.status(400).send("incorrect information");
+      });
+    } else {
+      res.status(400).send("incorrect information");
+    }
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error,
+    });
+  }
+};
+exports.logoutUser = (req, res) => {
+  req.session.destroy(() => {
+    res.send("log out success");
+  });
 };
