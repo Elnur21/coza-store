@@ -2,8 +2,8 @@
 import { baseUrl } from "./base_url";
 import axios from "axios";
 
-export const fetchData = async () => {
-  return axios
+export const getCards = async () => {
+  return await axios
     .get(baseUrl)
     .then((response) => {
       return response.data;

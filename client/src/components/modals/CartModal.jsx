@@ -1,12 +1,14 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext } from "react";
 import cartModal1 from "../../assets/image/cartModal1.webp";
 import cartModal2 from "../../assets/image/cartModal2.webp";
 import cartModal3 from "../../assets/image/cartModal3.webp";
 import Button from "../buttons/Button";
 import Featured from "../../pages/user/blog/Featured";
+import { CardContext } from "../../context/CardContext";
 export default function CartModal(props) {
+  const { toggleModalCart,myData,removeFromCart } = useContext(CardContext);
   return (
     <div
       className={
@@ -17,14 +19,14 @@ export default function CartModal(props) {
     >
       <div
         className="col-lg-9 col-md-6 col-sm-2 col-mobile-1"
-        onClick={props.click}
+        onClick={toggleModalCart}
       >
         <div className="overlay bg-dark opacity-50 w-100 h-100"></div>
       </div>
       <div className="col-lg-3 col-md-6 col-sm-10 col-mobile-11 bg-white p-5 cart-scroll">
         <div className="d-flex justify-content-between align-items-center">
           <h5 className=" fw-bold">YOUR CART</h5>{" "}
-          <button className="btn shadow-none fs-3" onClick={props.click}>
+          <button className="btn shadow-none fs-3" onClick={toggleModalCart}>
             <FontAwesomeIcon icon={faClose} />
           </button>
         </div>{" "}
@@ -49,12 +51,12 @@ export default function CartModal(props) {
             featureHeader="White Shirt Pleat"
             featurePrice="1 x $19.00"
           />
-          {props.cart.map((cartItem) => (
+          {myData.map((cartItem) => (
             <Featured
               blogLink="shop"
               key={cartItem.id}
               featureImage={cartItem.image}
-              click={() => props.removeFromCart(cartItem, props.cart)}
+              click={() => removeFromCart(cartItem, myData)}
               imageWidth="w-75"
               featureHeader={cartItem.name}
               featurePrice={"$" + cartItem.price}
@@ -66,8 +68,8 @@ export default function CartModal(props) {
         <p className="fs-5">
           Total: $
           {57.0 +
-            (props.cart.length > 0
-              ? props.cart
+            (myData.length > 0
+              ? myData
                   .map((datum) => parseFloat(datum.price))
                   .reduce((a, b) => a + b)
               : 0.0)}
