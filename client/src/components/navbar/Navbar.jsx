@@ -5,9 +5,15 @@ import { Link } from 'react-router-dom'
 import logo from '../../assets/image/download.webp'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { CardContext } from '../../context/CardContext'
+import { UserContext } from '../../context/UserContext'
 
-export default function Navbar(props) {
+export default function Navbar() {
     const { toggleModalCart, toggleModalSearch, toggleModalLike, myData, myLike } = useContext(CardContext);
+    const { user } = useContext(UserContext);
+    console.log(user.role)
+    if(user){
+        console.log("salam")
+    }
     const [hamburgerMenu, setHamburgerMenu] = useState(true);
     const toggleHamnurgerMenu = () => {
         setHamburgerMenu(!hamburgerMenu)

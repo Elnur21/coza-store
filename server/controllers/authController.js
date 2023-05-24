@@ -81,12 +81,20 @@ exports.loginUser = async (req, res) => {
         }
         if (same) {
           req.session.userID = user._id;
-          return res.status(200).send("log in success");
+          return res.status(200).json({
+            isValidPassword: true,
+          });
         }
-        res.status(400).send("incorrect information");
+        res.status(400).json({
+          isValidPassword: false,
+          message: "Incorrect email or password",
+        });
       });
     } else {
-      res.status(400).send("incorrect information");
+      res.status(400).json({
+        isValidPassword: false,
+        message: "Incorrect email or password",
+      });
     }
   } catch (error) {
     res.status(400).json({
