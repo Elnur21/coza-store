@@ -25,14 +25,12 @@ export default function CartModal(props) {
       </div>
       <div className="col-lg-3 col-md-6 col-sm-10 col-mobile-11 bg-white p-5 cart-scroll">
         <div className="d-flex justify-content-between align-items-center">
-          <h5 className=" fw-bold">YOUR CART</h5>{" "}
+          <h5 className="mb-0 fw-bold">YOUR CART</h5>
           <button className="btn shadow-none fs-3" onClick={toggleModalCart}>
             <FontAwesomeIcon icon={faClose} />
           </button>
-        </div>{" "}
-        <br />
-        <br />
-        <div>
+        </div>
+        <div className="mt-5">
           <Featured
             blogLink="shop"
             featureImage={cartModal1}
@@ -63,9 +61,7 @@ export default function CartModal(props) {
             />
           ))}
         </div>
-        <br />
-        <br />
-        <p className="fs-5">
+        <p className="fs-5 mt-5">
           Total: $
           {57.0 +
             (myData.length > 0
@@ -74,9 +70,7 @@ export default function CartModal(props) {
                   .reduce((a, b) => a + b)
               : 0.0)}
         </p>
-        <br />
-        <br />
-        <div className="d-flex justify-content-between w-100 gap-1">
+        <div className="d-flex justify-content-between w-100 gap-1 mt-5">
           <Button btnClass="btn-dark fw-bold w-50" btnText="VIEW CART" />
           <Button btnClass="btn-dark fw-bold w-50" btnText="CHECK OUT" />
         </div>
