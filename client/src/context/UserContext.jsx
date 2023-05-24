@@ -31,6 +31,7 @@ const UserContextProvider = ({ children }) => {
         users,
         sweetAlert,
         getUser,
+        setUser,
         user
     };
 

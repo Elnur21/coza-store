@@ -36,3 +36,6 @@ export const getUsers = async () => {
 export const loginUser = async (user) => {
   return await axios.post(`${baseUrl}/user/login`, user);
 };
+export const logOutUser = async () => {
+  return await axios.get(`${baseUrl}/user/logout`);
+};

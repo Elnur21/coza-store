@@ -6,12 +6,13 @@ import logo from '../../assets/image/download.webp'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { CardContext } from '../../context/CardContext'
 import { UserContext } from '../../context/UserContext'
+import { logOutUser } from '../../api/requests'
 
 export default function Navbar() {
     const { toggleModalCart, toggleModalSearch, toggleModalLike, myData, myLike } = useContext(CardContext);
-    const { user } = useContext(UserContext);
+    const { user, setUser, sweetAlert } = useContext(UserContext);
     console.log(user.role)
-    if(user){
+    if (user) {
         console.log("salam")
     }
     const [hamburgerMenu, setHamburgerMenu] = useState(true);
@@ -57,7 +58,16 @@ export default function Navbar() {
                                 <div className='col-lg-4 '>
                                     <ul type="none" className='d-flex mb-3 px-3'>
                                         <li className='py-2 border-0 border-start border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">Help & FAQs</Link></li>
-                                        <li className='py-2 border-0 border-start border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/login">My Account</Link></li>
+                                        <li className='py-2 border-0 border-start border-secondary px-3'>
+                                            {user.role == "unlogged" ?
+                                                <Link className='text-decoration-none text-secondary d-flex align-items-center' to="/login">Log in</Link>
+                                                : <button className='text-secondary btn' onClick={() => {
+                                                    logOutUser()
+                                                    sweetAlert("Log out", "you have logged out.", "success")
+                                                    setUser({ role: "unlogged" })
+                                                }}>Log out</button>
+                                            }
+                                        </li>
                                         <li className='py-2 border-0 border-start border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">EN</Link></li>
                                         <li className='py-2 border-0 border-start border-end border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">USD</Link></li>
                                     </ul>
@@ -83,10 +93,19 @@ export default function Navbar() {
                         </div>
                         <div className='col-lg-4 '>
                             <ul type="none" className='d-flex m-0'>
-                                <li className='py-2 border border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">Help & FAQs</Link></li>
-                                <li className='py-2 border border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/login">My Account</Link></li>
-                                <li className='py-2 border border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">EN</Link></li>
-                                <li className='py-2 border border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">USD</Link></li>
+                                <li className='py-2 border border-secondary px-3 d-flex align-items-center'><Link className='text-decoration-none text-secondary' to="/">Help & FAQs</Link></li>
+                                <li className='py-2 border border-secondary px-3 d-flex align-items-center'>
+                                    {user.role == "unlogged" ?
+                                        <Link className='text-decoration-none text-secondary d-flex align-items-center' to="/login">Log in</Link>
+                                        : <button className='text-secondary btn' onClick={() => {
+                                            logOutUser()
+                                            sweetAlert("Log out", "you have logged out.", "success")
+                                            setUser({ role: "unlogged" })
+                                        }}>Log out</button>
+                                    }
+                                </li>
+                                <li className='py-2 border border-secondary px-3 d-flex align-items-center'><Link className='text-decoration-none text-secondary' to="/">EN</Link></li>
+                                <li className='py-2 border border-secondary px-3 d-flex align-items-center'><Link className='text-decoration-none text-secondary' to="/">USD</Link></li>
                             </ul>
                         </div>
                     </div>
