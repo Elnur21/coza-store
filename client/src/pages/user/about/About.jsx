@@ -7,10 +7,10 @@ import "../../../assets/style/about.css"
 export default function About() {
     return (
         <section>
-            <Header pageName="About" backgroundImage={headBack2} /><br /><br /><br /><br /><br />
-            <div className='d-flex justify-content-center'>
+            <Header pageName="About" backgroundImage={headBack2} />
+            <div className='d-flex justify-content-center mt-5 pt-5'>
                 <div className='w-75'>
-                    <div className='row justify-content-between'>
+                    <div className='row justify-content-between pb-5'>
                         <div className='col-lg-7'>
                             <h4 className='fw-bold mb-3'>Our Story</h4>
                             <p className='text-muted'>
@@ -24,19 +24,19 @@ export default function About() {
                         <div className='col-lg-4'>
                             <img src={about1} alt="aboutImg" className='w-100 shadow-img1' />
                         </div>
-                    </div><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    <div className='row justify-content-between flex-lg-row flex-md-column-reverse flex-sm-column-reverse'>
-                        <div className='col-lg-4'>
+                    </div>
+                    <div className='row justify-content-between flex-lg-row flex-md-column-reverse flex-sm-column-reverse mt-5 pt-5'>
+                        <div className='col-lg-4 mt-5'>
                             <img src={about2} alt="aboutImg" className='w-100 shadow-img2' />
                         </div>
-                        <div className='col-lg-7'>
+                        <div className='col-lg-7 mt-5'>
                             <h4 className='fw-bold mb-3'>Our Mission</h4>
                             <p className='text-muted'>
                                 Mauris non lacinia magna. Sed nec lobortis dolor. Vestibulum rhoncus dignissim risus, sed consectetur erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam maximus mauris sit amet odio convallis, in pharetra magna gravida. Praesent sed nunc fermentum mi molestie tempor. Morbi vitae viverra odio. Pellentesque ac velit egestas, luctus arcu non, laoreet mauris. Sed in ipsum tempor, consequat odio in, porttitor ante. Ut mauris ligula, volutpat in sodales in, porta non odio. Pellentesque tempor urna vitae mi vestibulum, nec venenatis nulla lobortis. Proin at gravida ante. Mauris auctor purus at lacus maximus euismod. Pellentesque vulputate massa ut nisl hendrerit, eget elementum libero iaculis.<br /><br />
-                                
+
                                 <div className='border border-secondary border-0 border-start ps-4 py-1'>
                                     <p>
-                                    Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
+                                        Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
                                     </p>
                                     - Steve Job’s
                                 </div>
@@ -44,7 +44,7 @@ export default function About() {
                         </div>
                     </div>
                 </div>
-            </div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            </div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </section>
     )
 }

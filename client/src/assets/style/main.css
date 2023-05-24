@@ -19,3 +19,6 @@ input::-webkit-inner-spin-button {
 .cart-scroll{
   overflow: scroll;
 }
+.margin-auto{
+  margin: 0 auto;
+}

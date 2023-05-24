@@ -4,6 +4,7 @@ const cors = require("cors");
 const body_parser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 // const multer = require('multer');
 const cardRoutes = require("./routes/cardRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
@@ -37,6 +38,17 @@ app.use(body_parser.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(
+  session({
+    secret: "my_user",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl:
+        "mongodb+srv://elnurmagerramov:1234@teacherbase.wou1v.mongodb.net/CozaStore?retryWrites=true&w=majority",
+    }),
+  })
+);
 
 // routes
 app.use("/", cardRoutes);
@@ -44,7 +56,6 @@ app.use("/category", categoryRoutes);
 app.use("/user", userRoutes);
 app.use("*", (req, res, next) => {
   userIN = req.session.userID;
-  console.log(userIN);
   next();
 });
 
