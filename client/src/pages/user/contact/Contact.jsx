@@ -12,7 +12,7 @@ export default function Contact() {
     const sweetAlert = (e) => {
         swal({
             title: "Good job!",
-            text: "You clicked the button!",
+            text: "Your message has been sent!",
             icon: "success",
         });
         e.preventDefault();
