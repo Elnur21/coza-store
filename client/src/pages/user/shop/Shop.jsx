@@ -8,10 +8,12 @@ import { useState } from "react";
 import { TabPanel, useTabs } from "react-headless-tabs";
 import { TabSelector } from "./TabSelector";
 import { CardContext } from "../../../context/CardContext";
+import { CategoryContext } from "../../../context/CategoryContext";
 
 
 export default function Shop() {
   const { addToLike, addToCart, basicData, likes, setLikes } = useContext(CardContext);
+  const { categories } = useContext(CategoryContext);
   const [isExpanded, setExpanded] = useState(false);
   const [open, setOpen] = useState(false);
   const onItemClick = () => {
@@ -21,8 +23,10 @@ export default function Shop() {
     setOpen(!open);
   };
   const [shopDatas, setShopDatas] = useState([]);
+  const [tabs, setTabs] = useState([]);
   useEffect(() => {
     setShopDatas(basicData);
+    setTabs(categories);
   })
   const onSearchHandleChange = (value) => {
     const newData = basicData.filter((order) =>
@@ -32,14 +36,10 @@ export default function Shop() {
   };
   const [selectedTab, setSelectedTab] = useTabs([
     "all",
-    "Women",
-    "Men",
-    "Bag",
-    "Shoes",
-    "Watches",
+    ...tabs.map(c => c._id)
   ]);
   if (!basicData) {
-    return <div>loading...</div>
+    return <div className="w-100 text-center py-5">loading...</div>
   }
   return (
     <div className="d-flex justify-content-center">
@@ -48,6 +48,7 @@ export default function Shop() {
           <ul
             className="d-flex gap-4 col-lg-6 col-md-12 col-sm-12 px-0 text-muted flex-wrap align-items-center"
             type="none"
+            style={{ "fontSize": "15px" }}
           >
             <li>
               <TabSelector
@@ -57,46 +58,17 @@ export default function Shop() {
                 All Products
               </TabSelector>
             </li>
-            <li>
-              <TabSelector
-                isActive={selectedTab === "Women"}
-                onClick={() => setSelectedTab("Women")}
-              >
-                Women
-              </TabSelector>
-            </li>
-            <li>
-              <TabSelector
-                isActive={selectedTab === "Men"}
-                onClick={() => setSelectedTab("Men")}
-              >
-                Men
-              </TabSelector>
-            </li>
-            <li>
-              <TabSelector
-                isActive={selectedTab === "Bag"}
-                onClick={() => setSelectedTab("Bag")}
-              >
-                Bag
-              </TabSelector>
-            </li>
-            <li>
-              <TabSelector
-                isActive={selectedTab === "Shoes"}
-                onClick={() => setSelectedTab("Shoes")}
-              >
-                Shoes
-              </TabSelector>
-            </li>
-            <li>
-              <TabSelector
-                isActive={selectedTab === "Watches"}
-                onClick={() => setSelectedTab("Watches")}
-              >
-                Watches
-              </TabSelector>
-            </li>
+            {tabs.map(c =>
+              <li>
+                <TabSelector
+                  key={c._id}
+                  isActive={selectedTab === c._id}
+                  onClick={() => setSelectedTab(c._id)}
+                >
+                  {c.name}
+                </TabSelector>
+              </li>
+            )}
           </ul>
           <div className="col-lg-3 col-md-12 col-sm-12 d-flex justify-content-lg-end justify-content-md-start justify-content-sm-start gap-2">
             <button
@@ -308,11 +280,7 @@ export default function Shop() {
             </div>
           )}
         </Collapse>
-        <br />
-        <br />
-        <br />
-        <br />
-        <div className="row">
+        <div className="row mt-5 pt-3">
           {shopDatas.length == 0 ? <div className="col-12 text-center">There are not any products</div> :
             (selectedTab === "all" ? shopDatas.map((order) => (
               <ShopContent
@@ -329,7 +297,7 @@ export default function Shop() {
               />
             )) :
               shopDatas.map((order) => (
-                <TabPanel hidden={selectedTab !== order.value} className=" col-lg-3 col-md-4 col-sm-6 border-0">
+                <TabPanel hidden={selectedTab !== order.category} className=" col-lg-3 col-md-4 col-sm-6 border-0">
                   <ShopContent
                     colClasses=" col-12"
                     key={order.id}

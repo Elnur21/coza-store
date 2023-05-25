@@ -6,16 +6,19 @@ import { CardContextProvider } from "./context/CardContext";
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { ROUTES } from "./routes/routes";
 import { UserContextProvider } from "./context/UserContext";
+import { CategoryContextProvider } from "./context/CategoryContext";
 
 const router = createBrowserRouter(ROUTES)
 
 function App() {
   return (
     <UserContextProvider>
-      <CardContextProvider>
-        <ScrollTop />
-        <RouterProvider router={router} />
-      </CardContextProvider>
+      <CategoryContextProvider>
+        <CardContextProvider>
+          <ScrollTop />
+          <RouterProvider router={router} />
+        </CardContextProvider>
+      </CategoryContextProvider>
     </UserContextProvider>
   );
 }
