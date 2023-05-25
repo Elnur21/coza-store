@@ -11,10 +11,6 @@ import { logOutUser } from '../../api/requests'
 export default function Navbar() {
     const { toggleModalCart, toggleModalSearch, toggleModalLike, myData, myLike } = useContext(CardContext);
     const { user, setUser, sweetAlert } = useContext(UserContext);
-    console.log(user.role)
-    if (user) {
-        console.log("salam")
-    }
     const [hamburgerMenu, setHamburgerMenu] = useState(true);
     const toggleHamnurgerMenu = () => {
         setHamburgerMenu(!hamburgerMenu)
@@ -52,14 +48,14 @@ export default function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <div className='bg-dark d-flex justify-content-center'>
                             <div className='d-flex flex-column justify-content-start w-100'>
-                                <div className='col-lg-4 d-flex align-items-center text-secondary px-3 pt-3'>
+                                <div className=' d-flex align-items-center text-secondary px-3 pt-3'>
                                     Free shipping for standard order over $100
                                 </div> <hr className='text-muted' />
-                                <div className='col-lg-4 '>
+                                <div className=''>
                                     <ul type="none" className='d-flex mb-3 px-3'>
                                         <li className='py-2 border-0 border-start border-secondary px-3'><Link className='text-decoration-none text-secondary' to="/">Help & FAQs</Link></li>
                                         <li className='py-2 border-0 border-start border-secondary px-3'>
-                                            {user.role == "unlogged" ?
+                                            {user.role === "unlogged" ?
                                                 <Link className='text-decoration-none text-secondary d-flex align-items-center' to="/login">Log in</Link>
                                                 : <button className='text-secondary btn' onClick={() => {
                                                     logOutUser()
@@ -87,15 +83,15 @@ export default function Navbar() {
             </nav>
             <nav className={`${windowSize.innerWidth >= 992 ? " " : " d-none"}`}>
                 <div className={`bg-dark d-flex justify-content-center`}>
-                    <div className='d-flex justify-content-between w-75'>
-                        <div className='col-lg-4 d-flex align-items-center text-secondary'>
+                    <div className='d-flex justify-content-between  w-75'>
+                        <div className=' d-flex align-items-center text-secondary'>
                             Free shipping for standard order over $100
                         </div>
-                        <div className='col-lg-4 '>
-                            <ul type="none" className='d-flex m-0'>
+                        <div className=''>
+                            <ul type="none" className='d-flex m-0 p-0'>
                                 <li className='py-2 border border-secondary px-3 d-flex align-items-center'><Link className='text-decoration-none text-secondary' to="/">Help & FAQs</Link></li>
                                 <li className='py-2 border border-secondary px-3 d-flex align-items-center'>
-                                    {user.role == "unlogged" ?
+                                    {user.role === "unlogged" ?
                                         <Link className='text-decoration-none text-secondary d-flex align-items-center' to="/login">Log in</Link>
                                         : <button className='text-secondary btn' onClick={() => {
                                             logOutUser()
@@ -110,7 +106,7 @@ export default function Navbar() {
                         </div>
                     </div>
                 </div>
-                <div className={'d-flex justify-content-center'}>
+                <div className={`d-flex justify-content-center`}>
                     <div className='d-flex mt-4 w-75 justify-content-between'>
                         <div className='d-flex'>
                             <Link to="/">
@@ -119,7 +115,7 @@ export default function Navbar() {
                             <ul type="none" className='d-flex gap-4'>
                                 <li><Link className='text-decoration-none text-secondary' to="/">Home</Link></li>
                                 <li><Link className='text-decoration-none text-secondary' to="/shop">Shop</Link></li>
-                                <li><Link className='text-decoration-none text-secondary' to="/features">Features</Link><span className="h-100 position-relative badge bottom-50 translate-middle rounded-pill bg-danger">
+                                <li className='position-relative'><Link className='text-decoration-none text-secondary' to="/features">Features</Link><span className="position-absolute badge rounded-pill bg-danger bottom-100 start-75">
                                     HOT
                                 </span></li>
                                 <li><Link className='text-decoration-none text-secondary' to="/blog">Blog</Link></li>
