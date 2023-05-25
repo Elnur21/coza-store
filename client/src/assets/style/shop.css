@@ -1,14 +1,30 @@
 .cardButton {
-    left: 25%;
-    top: 60%;
-    display: none;
+  left: 25%;
+  bottom: 30%;
+  transform: translateY(150%);
+  opacity: 0;
+  transition: 0.5s;
 }
-
+.buttonHover {
+  width: fit-content;
+  overflow: hidden;
+}
 .buttonHover:hover button {
-    display: block !important;
+  transform: translateY(0%);
+  opacity: 1;
 }
-
 .cardButton:hover {
-    background-color: black !important;
-    color: white !important;
+  background-color: black !important;
+  color: white !important;
+}
+.buttonHover img,.shop-category {
+  transition: 0.5s;
+}
+.buttonHover:hover img {
+  transform: scale(1.1);
+}
+.shop-category:hover {
+  cursor: pointer !important;
+  border-bottom: 1px solid black;
+  color: black !important;
 }

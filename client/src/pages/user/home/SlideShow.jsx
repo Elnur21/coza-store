@@ -13,25 +13,20 @@ export default function SlideShow() {
   return (
     <>
       <Swiper
-        spaceBetween={30}
         effect={"fade"}
-        centeredSlides={true}
         autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
+          delay: 2500
         }}
-        navigation={true}
         modules={[EffectFade, Autoplay, Navigation]}
-        className="mySwiper"
       >
-        <SwiperSlide className='' style={{backgroundImage:"url("+slide1+")", backgroundRepeat:"no-repeat", backgroundSize:"100% 100%"}}>
-          <SlideContent info="Men New-Seasion" name="JACKETS & COATS"/>
+        <SwiperSlide style={{ backgroundImage: `url(${slide1})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
+          <SlideContent info="Men New-Seasion" name="JACKETS & COATS" />
         </SwiperSlide>
-        <SwiperSlide style={{backgroundImage:"url("+slide2+")", backgroundRepeat:"no-repeat", backgroundSize:"100% 100%"}}>
-          <SlideContent info="Women Collection 2018" name="NEW SEASION"/>
+        <SwiperSlide style={{ backgroundImage: `url(${slide3})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
+          <SlideContent info="Women Collection 2018" name="NEW SEASON" />
         </SwiperSlide>
-        <SwiperSlide style={{backgroundImage:"url("+slide3+")", backgroundRepeat:"no-repeat", backgroundSize:"100% 100%"}}>
-          <SlideContent info="Men Collection 2018" name="NEW ARRIALS"  />
+        <SwiperSlide style={{ backgroundImage: `url(${slide2})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
+          <SlideContent info="Men Collection 2018" name="NEW ARRIALS" />
         </SwiperSlide>
       </Swiper>
     </>
