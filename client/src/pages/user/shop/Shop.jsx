@@ -27,7 +27,7 @@ export default function Shop() {
   useEffect(() => {
     setShopDatas(basicData);
     setTabs(categories);
-  })
+  },[basicData,categories])
   const onSearchHandleChange = (value) => {
     const newData = basicData.filter((order) =>
       order.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
@@ -42,8 +42,8 @@ export default function Shop() {
     return <div className="w-100 text-center py-5">loading...</div>
   }
   return (
-    <div className="d-flex justify-content-center">
-      <div className="w-75">
+    <section className="d-flex justify-content-center mb-5">
+      <div className="w-75 mb-5 pb-5">
         <div className="d-flex mt-4 justify-content-between flex-wrap">
           <ul
             className="d-flex gap-4 col-lg-6 col-md-12 col-sm-12 px-0 text-muted flex-wrap align-items-center"
@@ -281,7 +281,7 @@ export default function Shop() {
           )}
         </Collapse>
         <div className="row mt-5 pt-3">
-          {shopDatas.length == 0 ? <div className="col-12 text-center">There are not any products</div> :
+          {shopDatas.length === 0 ? <div className="col-12 text-center">There are not any products</div> :
             (selectedTab === "all" ? shopDatas.map((order) => (
               <ShopContent
                 colClasses=" col-lg-3 col-md-4 col-sm-6"
@@ -314,26 +314,20 @@ export default function Shop() {
               )))
           }
         </div>
-
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center mt-5 pt-3">
           <button className="btn btn-secondary text-dark rounded-pill px-5 py-2">
             LOAD MORE
           </button>
         </div>
+        {/* <br />
         <br />
         <br />
         <br />
         <br />
         <br />
         <br />
-        <br />
-        <br />
+        <br /> */}
       </div>
-    </div>
+    </section>
   );
 }
