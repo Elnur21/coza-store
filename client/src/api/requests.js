@@ -1,4 +1,3 @@
-// import nextId from "react-id-generator";
 import { baseUrl } from "./base_url";
 import axios from "axios";
 
