@@ -2,7 +2,7 @@ import React from "react";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../../assets/style/shop.css";
-import ShopModal from "./ShopModal";
+import ShopModal from "../../../components/modals/ShopModal";
 import { useState } from "react";
 import { faHeartCircleCheck } from "@fortawesome/free-solid-svg-icons";
 export default function ShopContent(props) {
@@ -21,17 +21,17 @@ export default function ShopContent(props) {
   return (
     <div className={"card bg-transparent border-0" + props.colClasses}>
       <ShopModal
-              click={toggleModalShop}
-              classShop={shopModal ? "" : " d-none"}
-              myOrder={props.myOrder}
-              addToCart={props.addToCart}
-            />
+        click={toggleModalShop}
+        classShop={shopModal ? "" : " d-none"}
+        myOrder={props.myOrder}
+        addToCart={props.addToCart}
+      />
       <div className="buttonHover">
         <img
           src={props.cardImage}
           className="card-img-top"
           alt="card_image"
-          // onClick={props.addToCart}
+        // onClick={props.addToCart}
         />
         <button
           className="btn shadow-none rounded-pill py-2 bg-white text-dark w-50 position-absolute cardButton"
