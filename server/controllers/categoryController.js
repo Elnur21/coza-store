@@ -35,3 +35,20 @@ exports.deleteCategory = async (req, res) => {
     });
   }
 };
+exports.updateCategory = async (req, res) => {
+  try {
+    const { name } = req.body;
+    const category = await Category.findOne({ _id: req.params.id });
+    category.name = name;
+    category.save();
+    res.status(200).json({
+      updated: true,
+      category,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error,
+    });
+  }
+};

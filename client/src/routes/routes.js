@@ -14,6 +14,8 @@ import Shop from "../pages/user/shop/Shop";
 import LoginForgetPassword from "../pages/login/LoginForgetPassword";
 import Users from "../pages/admin/users/Users";
 import UserUpdate from "../pages/admin/users/UserUpdate";
+import Categories from "../pages/admin/categories/Categories";
+import UpdateCategory from "../pages/admin/categories/UpdateCategory";
 export const ROUTES = [
   {
     path: "/",
@@ -80,6 +82,14 @@ export const ROUTES = [
       {
         path: "users/:id",
         element: <UserUpdate />,
+      },
+      {
+        path: "categories",
+        element: <Categories />,
+      },
+      {
+        path: "categories/:id",
+        element: <UpdateCategory />,
       },
     ],
   },

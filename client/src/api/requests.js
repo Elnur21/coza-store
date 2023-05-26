@@ -54,3 +54,9 @@ export const deleteUserById = async (id) => {
 export const updateUserById = async (user) => {
   return await axios.put(`${baseUrl}/user/${user._id}`, user);
 };
+export const deleteCategoryById = async (id) => {
+  return await axios.delete(`${baseUrl}/category/${id}`);
+};
+export const updateCategoryById = async (category) => {
+  return await axios.put(`${baseUrl}/category/${category._id}`, category);
+};
