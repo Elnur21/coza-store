@@ -2,6 +2,7 @@ import ScrollTop from "./components/common/ScrollTop";
 import "../src/assets/style/main.css"
 import "../src/assets/style/responsive.css"
 import "../src/assets/style/login.css"
+import "../src/assets/style/admin.css"
 import { CardContextProvider } from "./context/CardContext";
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { ROUTES } from "./routes/routes";
