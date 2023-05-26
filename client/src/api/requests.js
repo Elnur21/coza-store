@@ -48,3 +48,6 @@ export const loginUser = async (user) => {
 export const logOutUser = async () => {
   return await axios.get(`${baseUrl}/user/logout`);
 };
+export const deleteUserById = async (id) => {
+  return await axios.delete(`${baseUrl}/user/${id}`);
+};

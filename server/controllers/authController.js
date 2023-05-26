@@ -36,6 +36,7 @@ exports.createUser = async (req, res) => {
 };
 exports.deleteUser = async (req, res) => {
   try {
+    console.log("silmek");
     await User.findOneAndRemove({ _id: req.params.id });
     res.status(200).send("user has been deleted");
   } catch (error) {

@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Numbers from './Numbers'
 import { faUsers, faShoppingBag, faDiagramProject, faArrowTrendUp, faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { UserContext } from '../../../context/UserContext'
+import { CardContext } from '../../../context/CardContext'
+import { CategoryContext } from '../../../context/CategoryContext'
 
 const ADashboard = () => {
+  const { basicData } = useContext(CardContext);
+    const { users } = useContext(UserContext);
+    const { categories } = useContext(CategoryContext);
   return (
     <div className='d-flex justify-content-center py-5'>
       <div className='w-75 text-start'>
         <h2 className='fs-1 fw-bold text-center'>Dashboard</h2>
         <div className='d-flex gap-5 w-100 px-2 mt-5 flex-column flex-lg-row'>
-          <Numbers count={15} name={"salam"} icon={faUsers} color={"info"} />
-          <Numbers count={15} name={"salam"} icon={faDiagramProject} color={"primary"} />
-          <Numbers count={15} name={"salam"} icon={faShoppingBag} color={"success"} />
+          <Numbers count={users.length} name={"Users"} icon={faUsers} color={"info"} />
+          <Numbers count={basicData.length} name={"Cards"} icon={faShoppingBag} color={"primary"} />
+          <Numbers count={categories.length} name={"Categories"} icon={faDiagramProject} color={"success"} />
         </div>
         <div className='row'>
           <div className='col-12 col-md-6 fs-5 mt-5'>

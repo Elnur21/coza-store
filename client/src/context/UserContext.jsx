@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getUser, getUsers } from '../api/requests';
+import { deleteUserById, getUsers } from '../api/requests';
 import swal from 'sweetalert';
 
 const UserContext = createContext();
@@ -17,7 +17,7 @@ const UserContextProvider = ({ children }) => {
             });
     }, []);
     const getUser = (userEmail) => {
-        setUser(users.filter(user => user.email == userEmail)[0])
+        setUser(users.filter(user => user.email === userEmail)[0])
     }
     const sweetAlert = (title, text, type) => {
         swal({
@@ -26,13 +26,17 @@ const UserContextProvider = ({ children }) => {
             icon: type,
         });
     }
+    const deleteUser=async(id)=>{
+        await deleteUserById(id);
+    }
 
     const value = {
         users,
         sweetAlert,
         getUser,
         setUser,
-        user
+        user,
+        deleteUser
     };
 
 

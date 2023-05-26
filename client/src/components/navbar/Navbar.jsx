@@ -77,7 +77,7 @@ export default function Navbar() {
                         </div>
                         {user.role === "admin" ?
                             <ul type="none" className='d-flex gap-4'>
-                                <li><Link className='text-decoration-none text-secondary' to="/admin">Home</Link></li>
+                                <li><Link className='text-decoration-none text-secondary' to="/admin">Dashboard</Link></li>
                                 <li><Link className='text-decoration-none text-secondary' to="/admin/users">Users</Link></li>
                                 <li><Link className='text-decoration-none text-secondary' to="/admin/cards">Cards</Link></li>
                                 <li><Link className='text-decoration-none text-secondary' to="/admin/categories">Categories</Link></li>
@@ -130,7 +130,7 @@ export default function Navbar() {
                             </Link>
                             {user.role === "admin" ?
                                 <ul type="none" className='d-flex gap-4'>
-                                    <li><Link className='text-decoration-none text-secondary' to="/admin">Home</Link></li>
+                                    <li><Link className='text-decoration-none text-secondary' to="/admin">Dashboard</Link></li>
                                     <li><Link className='text-decoration-none text-secondary' to="/admin/users">Users</Link></li>
                                     <li><Link className='text-decoration-none text-secondary' to="/admin/cards">Cards</Link></li>
                                     <li><Link className='text-decoration-none text-secondary' to="/admin/categories">Categories</Link></li>

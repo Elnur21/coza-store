@@ -12,6 +12,7 @@ import Features from "../pages/user/features/Features";
 import Dashboard from "../pages/user/home/Dashboard";
 import Shop from "../pages/user/shop/Shop";
 import LoginForgetPassword from "../pages/login/LoginForgetPassword";
+import Users from "../pages/admin/users/Users";
 export const ROUTES = [
   {
     path: "/",
@@ -70,6 +71,10 @@ export const ROUTES = [
       {
         path: "",
         element: <ADashboard />,
+      },
+      {
+        path: "users",
+        element: <Users />,
       },
     ],
   },
