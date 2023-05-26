@@ -36,7 +36,6 @@ exports.createUser = async (req, res) => {
 };
 exports.deleteUser = async (req, res) => {
   try {
-    console.log("silmek");
     await User.findOneAndRemove({ _id: req.params.id });
     res.status(200).send("user has been deleted");
   } catch (error) {
@@ -50,7 +49,6 @@ exports.updateUser = async (req, res) => {
   try {
     const { name, lastName, email, password } = req.body;
     const user = await User.findOne({ _id: req.params.id });
-    console.log(user);
     user.name = name;
     user.lastName = lastName;
     user.email = email;

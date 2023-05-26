@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { deleteUserById, getUsers } from '../api/requests';
+import { deleteUserById, getUsers, updateUserById } from '../api/requests';
 import swal from 'sweetalert';
 
 const UserContext = createContext();
@@ -29,6 +29,9 @@ const UserContextProvider = ({ children }) => {
     const deleteUser=async(id)=>{
         await deleteUserById(id);
     }
+    const updateUser=async(user)=>{
+        await updateUserById(user);
+    }
 
     const value = {
         users,
@@ -36,7 +39,8 @@ const UserContextProvider = ({ children }) => {
         getUser,
         setUser,
         user,
-        deleteUser
+        deleteUser,
+        updateUser
     };
 
 

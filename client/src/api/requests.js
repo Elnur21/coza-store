@@ -51,3 +51,6 @@ export const logOutUser = async () => {
 export const deleteUserById = async (id) => {
   return await axios.delete(`${baseUrl}/user/${id}`);
 };
+export const updateUserById = async (user) => {
+  return await axios.put(`${baseUrl}/user/${user._id}`, user);
+};
