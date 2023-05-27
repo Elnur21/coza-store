@@ -1,7 +1,6 @@
 import { baseUrl } from "./base_url";
 import axios from "axios";
 
-
 // products
 export const getCards = async () => {
   return await axios
@@ -63,7 +62,18 @@ export const deleteUserById = async (id) => {
 export const updateUserById = async (user) => {
   return await axios.put(`${baseUrl}/user/${user._id}`, user);
 };
-
+export const addCart = async (card) => {
+  return await axios.post(`${baseUrl}/addCart/${card._id}`, card);
+};
+export const removeCart = async (card) => {
+  return await axios.post(`${baseUrl}/removeCart/${card._id}`, card);
+};
+export const addLikes = async (card) => {
+  return await axios.post(`${baseUrl}/addLike/${card._id}`, card);
+};
+export const removeLikes = async (card) => {
+  return await axios.post(`${baseUrl}/removeLike/${card._id}`, card);
+};
 
 // categories
 export const getCategories = async () => {

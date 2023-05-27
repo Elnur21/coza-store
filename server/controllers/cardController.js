@@ -1,4 +1,5 @@
 const Card = require("../models/Card");
+const User = require("../models/User");
 
 exports.getAllCards = async (req, res) => {
   try {
@@ -47,6 +48,62 @@ exports.updateCard = async (req, res) => {
       updated: true,
       card,
     });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error,
+    });
+  }
+};
+
+exports.addToCart = async (req, res) => {
+  try {
+    const user = await User.findById(req.session.userID);
+    await user.cart.addToSet({ _id: req.params.id });
+    await user.save();
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error,
+    });
+  }
+};
+exports.removeFromCart = async (req, res) => {
+  try {
+    const user = await User.findById(req.session.userID);
+    await user.cart.pull({ _id: req.params.id });
+    await user.save();
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error,
+    });
+  }
+};
+
+exports.addToLike = async (req, res) => {
+  try {
+    const user = await User.findById(req.session.userID);
+    await user.likes.addToSet({ _id: req.params.id });
+    await user.save();
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error,
+    });
+  }
+};
+exports.removeFromLike = async (req, res) => {
+  try {
+    const user = await User.findById(req.session.userID);
+    await user.likes.pull({ _id: req.params.id });
+    await user.save();
+    res.status(200).json(user);
   } catch (error) {
     res.status(400).json({
       status: "fail",
