@@ -18,7 +18,10 @@ export default function CardContent(props) {
         <p className="card-text">${props.cardPrice}</p>
         <div className="d-flex w-100 justify-content-between">
             <Link to={`/admin/cards/${props.id}`} className="btn btn-warning text-white">Update</Link>
-            <button className="btn btn-danger" onClick={()=>props.deleteCard(props.id)}>Delete</button>
+            <button className="btn btn-danger" onClick={()=>{
+              props.deleteCard(props.id)
+              window.location.reload();
+              }}>Delete</button>
         </div>
       </div>
     </div>

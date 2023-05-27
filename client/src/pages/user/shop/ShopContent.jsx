@@ -21,7 +21,7 @@ export default function ShopContent(props) {
     console.log(props.likes)
   }
   return (
-    <div className="card bg-transparent border-0 col-lg-3 col-md-4 col-sm-6">
+    <div className={`card bg-transparent border-0 ${props.class}`}>
       <ShopModal
         click={toggleModalShop}
         classShop={shopModal ? "" : " d-none"}

@@ -42,7 +42,8 @@ app.use(
   session({
     secret: "my_user",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
     store: MongoStore.create({
       mongoUrl:
         "mongodb+srv://elnurmagerramov:1234@teacherbase.wou1v.mongodb.net/CozaStore?retryWrites=true&w=majority",
@@ -54,7 +55,7 @@ app.use(
 app.use("/", cardRoutes);
 app.use("/category", categoryRoutes);
 app.use("/user", userRoutes);
-app.use("*", (req, res, next) => {
+app.use("/user/login", (req, res, next) => {
   userIN = req.session.userID;
   next();
 });

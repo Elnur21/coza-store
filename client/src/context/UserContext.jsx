@@ -15,9 +15,18 @@ const UserContextProvider = ({ children }) => {
             .then(data => {
                 setUsers(data)
             });
+        const loginUser = localStorage.getItem("user");
+        if (loginUser) {
+            setUser(JSON.parse(loginUser))
+        }
+        else {
+            setUser({
+                role: "unlogged"
+            })
+        }
     }, []);
     const getUser = (userEmail) => {
-        setUser(users.filter(user => user.email === userEmail)[0])
+        localStorage.setItem('user', JSON.stringify(users.filter(user => user.email === userEmail)[0]))
     }
     const sweetAlert = (title, text, type) => {
         swal({
@@ -26,10 +35,10 @@ const UserContextProvider = ({ children }) => {
             icon: type,
         });
     }
-    const deleteUser=async(id)=>{
+    const deleteUser = async (id) => {
         await deleteUserById(id);
     }
-    const updateUser=async(user)=>{
+    const updateUser = async (user) => {
         await updateUserById(user);
     }
 

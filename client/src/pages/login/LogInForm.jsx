@@ -35,6 +35,7 @@ const LogInForm = () => {
                 getUser(values.email);
                 sweetAlert("Log in", "You logged in successfully.", "success");
                 navigate('/');
+                window.location.reload();
             }
         } catch (error) {
             console.error(error);

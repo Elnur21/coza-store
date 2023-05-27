@@ -58,8 +58,10 @@ exports.updateCard = async (req, res) => {
 
 exports.addToCart = async (req, res) => {
   try {
-    const user = await User.findById(req.session.userID);
-    await user.cart.addToSet({ _id: req.params.id });
+    const user = await User.findById(userIN);
+    await user.cart.addToSet(
+      { _id: req.params.id }
+    );
     await user.save();
 
     res.status(200).json(user);
@@ -72,7 +74,7 @@ exports.addToCart = async (req, res) => {
 };
 exports.removeFromCart = async (req, res) => {
   try {
-    const user = await User.findById(req.session.userID);
+    const user = await User.findById(userIN);
     await user.cart.pull({ _id: req.params.id });
     await user.save();
     res.status(200).json(user);
@@ -86,7 +88,7 @@ exports.removeFromCart = async (req, res) => {
 
 exports.addToLike = async (req, res) => {
   try {
-    const user = await User.findById(req.session.userID);
+    const user = await User.findById(userIN);
     await user.likes.addToSet({ _id: req.params.id });
     await user.save();
 
@@ -100,7 +102,7 @@ exports.addToLike = async (req, res) => {
 };
 exports.removeFromLike = async (req, res) => {
   try {
-    const user = await User.findById(req.session.userID);
+    const user = await User.findById(userIN);
     await user.likes.pull({ _id: req.params.id });
     await user.save();
     res.status(200).json(user);

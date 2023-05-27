@@ -79,7 +79,8 @@ exports.loginUser = async (req, res) => {
           });
         }
         if (same) {
-          req.session.userID = user._id;
+          userIN = user._id;
+          console.log(userIN);
           return res.status(200).json({
             isValidPassword: true,
           });
@@ -103,7 +104,9 @@ exports.loginUser = async (req, res) => {
   }
 };
 exports.logoutUser = (req, res) => {
-  req.session.destroy(() => {
-    res.send("log out success");
-  });
+  userIN = null;
+  res.send("log out success");
+  // req.session.destroy(() => {
+  //   res.send("log out success");
+  // });
 };

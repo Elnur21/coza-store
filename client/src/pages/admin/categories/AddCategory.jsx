@@ -15,6 +15,7 @@ const AddCategory = () => {
     const handleSubmit = () => {
         createCategory(category)
         navigate("/admin/categories")
+        window.location.reload();
     };
 
     return (
