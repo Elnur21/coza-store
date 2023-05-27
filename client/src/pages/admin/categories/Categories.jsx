@@ -33,7 +33,10 @@ const Categories = () => {
                                         </Link>
                                     </td>
                                     <td align='end'>
-                                        <button className="btn btn-danger" onClick={() => deleteCategory(category._id)}><FontAwesomeIcon icon={faRemove} /></button>
+                                        <button className="btn btn-danger" onClick={() => {
+                                            deleteCategory(category._id)
+                                            window.location.reload();
+                                            }}><FontAwesomeIcon icon={faRemove} /></button>
                                     </td>
                                 </tr>
                             ))

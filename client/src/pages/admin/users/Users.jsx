@@ -11,7 +11,6 @@ const Users = () => {
         setUsersData(users);
     }, [users])
 
-
     return (
         <div className="d-flex justify-content-center py-5">
             <div className="w-75">
@@ -45,7 +44,10 @@ const Users = () => {
                                         </Link>
                                     </td>
                                     <td>
-                                        <button className="btn btn-danger" onClick={() => deleteUser(user._id)}><FontAwesomeIcon icon={faRemove} /></button>
+                                        <button className="btn btn-danger" onClick={() => {
+                                            deleteUser(user._id)
+                                            window.location.reload();
+                                        }}><FontAwesomeIcon icon={faRemove} /></button>
                                     </td>
                                 </tr>
                             ))

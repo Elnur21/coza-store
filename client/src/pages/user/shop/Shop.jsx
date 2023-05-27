@@ -27,7 +27,7 @@ export default function Shop() {
   useEffect(() => {
     setShopDatas(basicData);
     setTabs(categories);
-  },[basicData,categories])
+  }, [basicData, categories])
   const onSearchHandleChange = (value) => {
     const newData = basicData.filter((order) =>
       order.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())
@@ -284,6 +284,7 @@ export default function Shop() {
           {shopDatas.length === 0 ? <div className="col-12 text-center">There are not any products</div> :
             (selectedTab === "all" ? shopDatas.map((order) => (
               <ShopContent
+                class="col-lg-3 col-md-4 col-sm-6"
                 key={order._id}
                 cardImage={order.image}
                 cardTitle={order.name}
@@ -296,8 +297,9 @@ export default function Shop() {
               />
             )) :
               shopDatas.map((order) => (
-                <TabPanel hidden={selectedTab !== order.category}>
+                <TabPanel hidden={selectedTab !== order.category} className="col-lg-3 col-md-4 col-sm-6">
                   <ShopContent
+                    class="w-100"
                     key={order._id}
                     cardImage={order.image}
                     cardTitle={order.name}
@@ -317,14 +319,6 @@ export default function Shop() {
             LOAD MORE
           </button>
         </div>
-        {/* <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br /> */}
       </div>
     </section>
   );

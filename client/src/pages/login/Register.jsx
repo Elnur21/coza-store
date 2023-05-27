@@ -23,12 +23,13 @@ const Register = () => {
         const userExists = users.some((user) => user.email === values.email);
 
         if (userExists) {
-            sweetAlert("Oops...","this email already exists!!!","error");
+            sweetAlert("Oops...", "this email already exists!!!", "error");
         } else {
             try {
                 createUser(values);
-                sweetAlert("Account created","You can log in.","success");
+                sweetAlert("Account created", "You can log in.", "success");
                 navigate('/login');
+                window.location.reload();
             } catch (error) {
                 console.error(error);
             }
