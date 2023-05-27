@@ -55,7 +55,7 @@ export default function CartModal(props) {
               key={cartItem.id}
               featureImage={cartItem.image}
               click={() => removeFromCart(cartItem, myData)}
-              imageWidth="w-75"
+              imageWidth="w-50"
               featureHeader={cartItem.name}
               featurePrice={"$" + cartItem.price}
             />

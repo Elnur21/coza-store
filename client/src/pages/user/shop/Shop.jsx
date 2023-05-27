@@ -296,9 +296,8 @@ export default function Shop() {
               />
             )) :
               shopDatas.map((order) => (
-                <TabPanel hidden={selectedTab !== order.category} className=" col-lg-3 col-md-4 col-sm-6 border-0">
+                <TabPanel hidden={selectedTab !== order.category}>
                   <ShopContent
-                    colClasses=" col-12"
                     key={order._id}
                     cardImage={order.image}
                     cardTitle={order.name}

@@ -18,6 +18,8 @@ import Categories from "../pages/admin/categories/Categories";
 import UpdateCategory from "../pages/admin/categories/UpdateCategory";
 import Cards from "../pages/admin/cards/Cards";
 import CardUpdate from "../pages/admin/cards/UpdateCard";
+import AddCard from "../pages/admin/cards/AddCard";
+import AddCategory from "../pages/admin/categories/AddCategory";
 export const ROUTES = [
   {
     path: "/",
@@ -100,6 +102,14 @@ export const ROUTES = [
       {
         path: "cards/:id",
         element: <CardUpdate />,
+      },
+      {
+        path: "add-card",
+        element: <AddCard />,
+      },
+      {
+        path: "add-category",
+        element: <AddCategory />,
       },
     ],
   },

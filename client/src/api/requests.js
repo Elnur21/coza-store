@@ -1,7 +1,6 @@
 import { baseUrl } from "./base_url";
 import axios from "axios";
 
-
 // products
 export const getCards = async () => {
   return await axios
@@ -18,6 +17,16 @@ export const deleteCardById = async (id) => {
 };
 export const updateCardById = async (card) => {
   return await axios.put(`${baseUrl}/${card._id}`, card);
+};
+export const createCard = async (formData) => {
+  await axios
+    .post(`${baseUrl}/`, formData)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 // users
@@ -53,7 +62,18 @@ export const deleteUserById = async (id) => {
 export const updateUserById = async (user) => {
   return await axios.put(`${baseUrl}/user/${user._id}`, user);
 };
-
+export const addCart = async (card) => {
+  return await axios.post(`${baseUrl}/addCart/${card._id}`, card);
+};
+export const removeCart = async (card) => {
+  return await axios.post(`${baseUrl}/removeCart/${card._id}`, card);
+};
+export const addLikes = async (card) => {
+  return await axios.post(`${baseUrl}/addLike/${card._id}`, card);
+};
+export const removeLikes = async (card) => {
+  return await axios.post(`${baseUrl}/removeLike/${card._id}`, card);
+};
 
 // categories
 export const getCategories = async () => {
@@ -71,4 +91,14 @@ export const deleteCategoryById = async (id) => {
 };
 export const updateCategoryById = async (category) => {
   return await axios.put(`${baseUrl}/category/${category._id}`, category);
+};
+export const createCategory = async (formData) => {
+  await axios
+    .post(`${baseUrl}/category`, formData)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { deleteCardById, getCards, updateCardById } from '../api/requests';
+import { addCart, addLikes, deleteCardById, getCards, removeCart, removeLikes, updateCardById } from '../api/requests';
 import nextId from "react-id-generator";
 
 const CardContext = createContext();
@@ -23,22 +23,17 @@ const CardContextProvider = ({ children }) => {
   }, []);
   const [myData, setMyData] = useState([]);
   const addToCart = (data) => {
+    addCart(data);
     setMyData(
       [
         ...myData,
-        {
-          id: nextId(),
-          dataId: data.id,
-          name: data.name,
-          image: data.image,
-          price: data.price,
-          value: data.value
-        }
+        data
       ]
     )
   }
   const removeFromCart = (data, mydata) => {
-    setMyData(mydata.filter(deck => deck.id !== data.id));
+    removeCart(data)
+    setMyData(mydata.filter(deck => deck._id !== data._id));
   }
   const [likeModal, setLikeModal] = useState(true);
   const toggleModalLike = () => {
@@ -46,23 +41,17 @@ const CardContextProvider = ({ children }) => {
   };
   const [myLike, setMyLike] = useState([]);
   const addToLike = (data) => {
+    addLikes(data)
     setMyLike(
       [
         ...myLike,
-        {
-          id: nextId(),
-          dataId: data.id,
-          name: data.name,
-          image: data.image,
-          price: data.price,
-          value: data.value
-        }
+        data
       ]
     )
   }
-  const removeFromLike = (data, mydata) => {
-    setMyLike(mydata.filter(deck => deck.id !== data.id));
-    console.log(myLike)
+  const removeFromLike = (data, myLike) => {
+    removeLikes(data);
+    setMyLike(myLike.filter(deck => deck._id !== data._id));
   }
   const deleteCard = async (id) => {
     await deleteCardById(id);
