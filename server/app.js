@@ -9,6 +9,9 @@ const MongoStore = require("connect-mongo");
 const cardRoutes = require("./routes/cardRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const userRoutes = require("./routes/userRoutes");
+const bannerRoutes = require("./routes/bannerRoutes");
+const contactRoutes = require("./routes/contactRoutes");
+const slideRoutes = require("./routes/slideRoutes");
 
 // variables
 const port = 8080;
@@ -55,6 +58,9 @@ app.use(
 app.use("/", cardRoutes);
 app.use("/category", categoryRoutes);
 app.use("/user", userRoutes);
+app.use("/slide", slideRoutes);
+app.use("/contact", contactRoutes);
+app.use("/banner", bannerRoutes);
 app.use("/user/login", (req, res, next) => {
   userIN = req.session.userID;
   next();

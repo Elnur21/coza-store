@@ -6,7 +6,7 @@ const CardContext = createContext();
 
 
 const CardContextProvider = ({ children }) => {
-  const { user, setUser, users, setUsers } = useContext(UserContext);
+  const { user, users, setUsers } = useContext(UserContext);
   const [searchModal, setSearchModal] = useState(true);
   const toggleModalSearch = () => {
     setSearchModal(!searchModal);
