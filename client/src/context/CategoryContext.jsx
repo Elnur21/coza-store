@@ -1,10 +1,16 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getCategories } from '../api/requests';
+import { deleteCategoryById, getCategories, updateCategoryById } from '../api/requests';
 
 const CategoryContext = createContext();
 
 
 const CategoryContextProvider = ({ children }) => {
+    const deleteCategory = async (id) => {
+        await deleteCategoryById(id);
+    }
+    const updateCategory = async (category) => {
+        await updateCategoryById(category);
+    }
     const [categories, setCategories] = useState([]);
     useEffect(() => {
         getCategories()
@@ -14,9 +20,10 @@ const CategoryContextProvider = ({ children }) => {
     }, []);
 
 
-
     const value = {
-        categories
+        categories,
+        deleteCategory,
+        updateCategory
     };
 
 
