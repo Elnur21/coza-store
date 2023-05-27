@@ -81,8 +81,8 @@ export default function Navbar() {
                                 <li><Link className='text-decoration-none text-secondary' to="/admin/users">Users</Link></li>
                                 <li><Link className='text-decoration-none text-secondary' to="/admin/cards">Cards</Link></li>
                                 <li><Link className='text-decoration-none text-secondary' to="/admin/categories">Categories</Link></li>
-                                <li><Link className='text-decoration-none text-secondary' to="/admin/addCard">Add New Card</Link></li>
-                                <li><Link className='text-decoration-none text-secondary' to="/admin/addCategory">Add New Category</Link></li>
+                                <li><Link className='text-decoration-none text-secondary' to="/admin/add-card">Add New Card</Link></li>
+                                <li><Link className='text-decoration-none text-secondary' to="/admin/add-category">Add New Category</Link></li>
                             </ul>
 
                             : <ul type="none" className='px-3 navbar-nav me-auto mb-2 mb-lg-0 pt-2 bg-primary'>
@@ -134,8 +134,8 @@ export default function Navbar() {
                                     <li><Link className='text-decoration-none text-secondary' to="/admin/users">Users</Link></li>
                                     <li><Link className='text-decoration-none text-secondary' to="/admin/cards">Cards</Link></li>
                                     <li><Link className='text-decoration-none text-secondary' to="/admin/categories">Categories</Link></li>
-                                    <li><Link className='text-decoration-none text-secondary' to="/admin/addCard">Add New Card</Link></li>
-                                    <li><Link className='text-decoration-none text-secondary' to="/admin/addCategory">Add New Category</Link></li>
+                                    <li><Link className='text-decoration-none text-secondary' to="/admin/add-card">Add New Card</Link></li>
+                                    <li><Link className='text-decoration-none text-secondary' to="/admin/add-category">Add New Category</Link></li>
                                 </ul>
 
                                 : <ul type="none" className='d-flex gap-4'>

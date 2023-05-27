@@ -19,6 +19,16 @@ export const deleteCardById = async (id) => {
 export const updateCardById = async (card) => {
   return await axios.put(`${baseUrl}/${card._id}`, card);
 };
+export const createCard = async (formData) => {
+  await axios
+    .post(`${baseUrl}/`, formData)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
 
 // users
 export const createUser = async (formData) => {
@@ -71,4 +81,14 @@ export const deleteCategoryById = async (id) => {
 };
 export const updateCategoryById = async (category) => {
   return await axios.put(`${baseUrl}/category/${category._id}`, category);
+};
+export const createCategory = async (formData) => {
+  await axios
+    .post(`${baseUrl}/category`, formData)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
