@@ -13,6 +13,11 @@ import Dashboard from "../pages/user/home/Dashboard";
 import Shop from "../pages/user/shop/Shop";
 import LoginForgetPassword from "../pages/login/LoginForgetPassword";
 import Users from "../pages/admin/users/Users";
+import UserUpdate from "../pages/admin/users/UserUpdate";
+import Categories from "../pages/admin/categories/Categories";
+import UpdateCategory from "../pages/admin/categories/UpdateCategory";
+import Cards from "../pages/admin/cards/Cards";
+import CardUpdate from "../pages/admin/cards/UpdateCard";
 export const ROUTES = [
   {
     path: "/",
@@ -75,6 +80,26 @@ export const ROUTES = [
       {
         path: "users",
         element: <Users />,
+      },
+      {
+        path: "users/:id",
+        element: <UserUpdate />,
+      },
+      {
+        path: "categories",
+        element: <Categories />,
+      },
+      {
+        path: "categories/:id",
+        element: <UpdateCategory />,
+      },
+      {
+        path: "cards",
+        element: <Cards />,
+      },
+      {
+        path: "cards/:id",
+        element: <CardUpdate />,
       },
     ],
   },

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRemove, faUpload } from "@fortawesome/free-solid-svg-icons";
 
 const Users = () => {
-    const { users,deleteUser } = useContext(UserContext);
+    const { users, deleteUser } = useContext(UserContext);
     const [usersData, setUsersData] = useState([]);
     useEffect(() => {
         setUsersData(users);
@@ -40,12 +40,12 @@ const Users = () => {
                                     <td>{user.cart.length}</td>
                                     <td>{user.likes.length}</td>
                                     <td>
-                                        <Link className="btn btn-warning text-white" to={`admin/users/${user._id}`}>
+                                        <Link className="btn btn-warning text-white" to={`/admin/users/${user._id}`}>
                                             <FontAwesomeIcon icon={faUpload} />
                                         </Link>
                                     </td>
                                     <td>
-                                        <button className="btn btn-danger" onClick={()=>deleteUser(user._id)}><FontAwesomeIcon icon={faRemove} /></button>
+                                        <button className="btn btn-danger" onClick={() => deleteUser(user._id)}><FontAwesomeIcon icon={faRemove} /></button>
                                     </td>
                                 </tr>
                             ))

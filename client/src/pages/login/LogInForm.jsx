@@ -29,7 +29,7 @@ const LogInForm = () => {
                     console.log(error);
                 });
 
-            if (password == false) {
+            if (password === false) {
                 sweetAlert("Robot test", "Click log in again if your password is correct", "warning");
             } else {
                 getUser(values.email);

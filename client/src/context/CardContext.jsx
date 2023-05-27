@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getCards } from '../api/requests';
+import { deleteCardById, getCards, updateCardById } from '../api/requests';
 import nextId from "react-id-generator";
 
 const CardContext = createContext();
@@ -64,7 +64,12 @@ const CardContextProvider = ({ children }) => {
     setMyLike(mydata.filter(deck => deck.id !== data.id));
     console.log(myLike)
   }
-
+  const deleteCard = async (id) => {
+    await deleteCardById(id);
+  }
+  const updateCard = async (category) => {
+    await updateCardById(category);
+  }
 
 
   const value = {
@@ -85,7 +90,9 @@ const CardContextProvider = ({ children }) => {
     basicData,
     myData,
     setMyData,
-    addToCart
+    addToCart,
+    deleteCard,
+    updateCard
   };
 
 
