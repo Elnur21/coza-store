@@ -1,14 +1,13 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext } from "react";
-import cartModal1 from "../../assets/image/cartModal1.webp";
-import cartModal2 from "../../assets/image/cartModal2.webp";
-import cartModal3 from "../../assets/image/cartModal3.webp";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "../buttons/Button";
 import Featured from "../../pages/user/blog/Featured";
 import { CardContext } from "../../context/CardContext";
+
 export default function CartModal(props) {
-  const { toggleModalCart,myData,removeFromCart } = useContext(CardContext);
+  const { toggleModalCart, myData, removeFromCart } = useContext(CardContext);
+
   return (
     <div
       className={
@@ -31,31 +30,13 @@ export default function CartModal(props) {
           </button>
         </div>
         <div className="mt-5">
-          <Featured
-            blogLink="shop"
-            featureImage={cartModal1}
-            featureHeader="White Shirt Pleat"
-            featurePrice="1 x $19.00"
-          />
-          <Featured
-            blogLink="shop"
-            featureImage={cartModal2}
-            featureHeader="White Shirt Pleat"
-            featurePrice="1 x $19.00"
-          />
-          <Featured
-            blogLink="shop"
-            featureImage={cartModal3}
-            featureHeader="White Shirt Pleat"
-            featurePrice="1 x $19.00"
-          />
           {myData.map((cartItem) => (
             <Featured
               blogLink="shop"
               key={cartItem.id}
               featureImage={cartItem.image}
-              click={() => removeFromCart(cartItem, myData)}
-              imageWidth="w-75"
+              click={() => removeFromCart(cartItem)}
+              imageWidth="w-50"
               featureHeader={cartItem.name}
               featurePrice={"$" + cartItem.price}
             />
@@ -63,12 +44,13 @@ export default function CartModal(props) {
         </div>
         <p className="fs-5 mt-5">
           Total: $
-          {57.0 +
-            (myData.length > 0
+          {
+            myData.length > 0
               ? myData
-                  .map((datum) => parseFloat(datum.price))
-                  .reduce((a, b) => a + b)
-              : 0.0)}
+                .map((c) => parseFloat(c.price))
+                .reduce((a, b) => a + b)
+              : 0.0
+          }
         </p>
         <div className="d-flex justify-content-between w-100 gap-1 mt-5">
           <Button btnClass="btn-dark fw-bold w-50" btnText="VIEW CART" />

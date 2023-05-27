@@ -24,6 +24,7 @@ const CardUpdate = () => {
     const handleSubmit = () => {
         updateCard(card)
         navigate("/admin/cards")
+        window.location.reload();
     };
 
     return (
