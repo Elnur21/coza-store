@@ -1,6 +1,8 @@
 import { baseUrl } from "./base_url";
 import axios from "axios";
 
+
+// products
 export const getCards = async () => {
   return await axios
     .get(baseUrl)
@@ -11,17 +13,14 @@ export const getCards = async () => {
       console.log(error);
     });
 };
-export const getCategories = async () => {
-  return await axios
-    .get(`${baseUrl}/category`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+export const deleteCardById = async (id) => {
+  return await axios.delete(`${baseUrl}/${id}`);
+};
+export const updateCardById = async (card) => {
+  return await axios.put(`${baseUrl}/${card._id}`, card);
 };
 
+// users
 export const createUser = async (formData) => {
   await axios
     .post(`${baseUrl}/user/signup`, formData)
@@ -53,6 +52,19 @@ export const deleteUserById = async (id) => {
 };
 export const updateUserById = async (user) => {
   return await axios.put(`${baseUrl}/user/${user._id}`, user);
+};
+
+
+// categories
+export const getCategories = async () => {
+  return await axios
+    .get(`${baseUrl}/category`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 export const deleteCategoryById = async (id) => {
   return await axios.delete(`${baseUrl}/category/${id}`);

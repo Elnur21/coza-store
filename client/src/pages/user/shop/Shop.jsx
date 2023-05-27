@@ -284,7 +284,6 @@ export default function Shop() {
           {shopDatas.length === 0 ? <div className="col-12 text-center">There are not any products</div> :
             (selectedTab === "all" ? shopDatas.map((order) => (
               <ShopContent
-                colClasses=" col-lg-3 col-md-4 col-sm-6"
                 key={order._id}
                 cardImage={order.image}
                 cardTitle={order.name}

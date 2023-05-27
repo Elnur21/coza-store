@@ -19,7 +19,7 @@ export default function ShopContent(props) {
     console.log(props.likes)
   }
   return (
-    <div className={"card bg-transparent border-0" + props.colClasses}>
+    <div className="card bg-transparent border-0 col-lg-3 col-md-4 col-sm-6">
       <ShopModal
         click={toggleModalShop}
         classShop={shopModal ? "" : " d-none"}
@@ -31,7 +31,6 @@ export default function ShopContent(props) {
           src={props.cardImage}
           className="card-img-top"
           alt="card_image"
-        // onClick={props.addToCart}
         />
         <button
           className="btn shadow-none rounded-pill py-2 bg-white text-dark w-50 position-absolute cardButton"
