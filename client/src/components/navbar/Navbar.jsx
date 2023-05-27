@@ -42,9 +42,8 @@ export default function Navbar() {
   return (
     <div>
       <nav
-        className={`navbar navbar-expand-lg navbar-light w-100 ${
-          windowSize.innerWidth >= 992 ? " d-none" : " "
-        }`}
+        className={`navbar navbar-expand-lg navbar-light w-100 ${windowSize.innerWidth >= 992 ? " d-none" : " "
+          }`}
       >
         <div className="container-fluid w-100 mx-0 px-0">
           <Link
@@ -71,7 +70,7 @@ export default function Navbar() {
                       className="fs-5 text-secondary"
                     />
                     <span className="h-50 translate-middle badge bg-primary px-1">
-                      {myData.length + 3}
+                      {myData.length}
                     </span>
                   </span>
                 ) : (
@@ -485,7 +484,7 @@ export default function Navbar() {
                       className="fs-5 text-secondary"
                     />
                     <span className="h-50 translate-middle badge bg-primary px-1">
-                      {myData.length + 3}
+                      {myData.length}
                     </span>
                   </span>
                 ) : (

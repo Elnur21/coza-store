@@ -59,9 +59,7 @@ exports.updateCard = async (req, res) => {
 exports.addToCart = async (req, res) => {
   try {
     const user = await User.findById(userIN);
-    await user.cart.addToSet(
-      { _id: req.params.id }
-    );
+    await user.cart.addToSet(req.body);
     await user.save();
 
     res.status(200).json(user);
