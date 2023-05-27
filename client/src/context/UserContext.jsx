@@ -7,10 +7,10 @@ const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
     const [users, setUsers] = useState([]);
-    // const [cart, setCart] = useState([]);
     const [user, setUser] = useState({
         role: "unlogged",
-        cart:[]
+        cart: [],
+        likes: []
     });
     useEffect(() => {
         getUsers()
@@ -24,7 +24,8 @@ const UserContextProvider = ({ children }) => {
         else {
             setUser({
                 role: "unlogged",
-                cart:[]
+                cart: [],
+                likes: []
             })
         }
     }, []);
