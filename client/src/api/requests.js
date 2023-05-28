@@ -103,3 +103,87 @@ export const createCategory = async (formData) => {
       console.error(error);
     });
 };
+
+//banner
+export const getBanners = async () => {
+  return await axios
+    .get(`${baseUrl}/banner`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export const deleteBannerById = async (id) => {
+  return await axios.delete(`${baseUrl}/banner/${id}`);
+};
+export const updateBannerById = async (banner) => {
+  return await axios.put(`${baseUrl}/banner/${banner._id}`, banner);
+};
+export const createBanner = async (formData) => {
+  await axios
+    .post(`${baseUrl}/banner`, formData)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+//slide
+export const getSlides = async () => {
+  return await axios
+    .get(`${baseUrl}/slide`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export const deleteSlideById = async (id) => {
+  return await axios.delete(`${baseUrl}/slide/${id}`);
+};
+export const updateSlideById = async (slide) => {
+  return await axios.put(`${baseUrl}/slide/${slide._id}`, slide);
+};
+export const createSlide = async (formData) => {
+  await axios
+    .post(`${baseUrl}/slide`, formData)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+//contact
+export const getContacts = async () => {
+  return await axios
+    .get(`${baseUrl}/contact`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export const deleteContactById = async (id) => {
+  return await axios.delete(`${baseUrl}/contact/${id}`);
+};
+export const updateContactById = async (contact) => {
+  return await axios.put(`${baseUrl}/contact/${contact._id}`, contact);
+};
+export const createContact = async (formData) => {
+  await axios
+    .post(`${baseUrl}/contact`, formData)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
