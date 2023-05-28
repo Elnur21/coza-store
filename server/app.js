@@ -5,7 +5,6 @@ const body_parser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-// const multer = require('multer');
 const cardRoutes = require("./routes/cardRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const userRoutes = require("./routes/userRoutes");
