@@ -36,7 +36,7 @@ export default function CartModal(props) {
                     key={cartItem.id}
                     featureImage={cartItem.image}
                     click={() => removeFromLike(cartItem)}
-                    imageWidth="w-75"
+                    imageWidth="w-75 mt-2"
                     featureHeader={cartItem.name}
                     featurePrice={"$" + cartItem.price}
                     likes={props.likes}

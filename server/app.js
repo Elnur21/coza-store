@@ -5,13 +5,13 @@ const body_parser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-// const multer = require('multer');
 const cardRoutes = require("./routes/cardRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const userRoutes = require("./routes/userRoutes");
 const bannerRoutes = require("./routes/bannerRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const slideRoutes = require("./routes/slideRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 
 // variables
 const port = 8080;
@@ -61,6 +61,7 @@ app.use("/user", userRoutes);
 app.use("/slide", slideRoutes);
 app.use("/contact", contactRoutes);
 app.use("/banner", bannerRoutes);
+app.use("/blog", blogRoutes);
 app.use("/user/login", (req, res, next) => {
   userIN = req.session.userID;
   next();

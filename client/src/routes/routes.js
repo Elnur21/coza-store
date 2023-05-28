@@ -20,6 +20,14 @@ import Cards from "../pages/admin/cards/Cards";
 import CardUpdate from "../pages/admin/cards/UpdateCard";
 import AddCard from "../pages/admin/cards/AddCard";
 import AddCategory from "../pages/admin/categories/AddCategory";
+import Banners from "../pages/admin/banners/Banners";
+import UpdateBanner from "../pages/admin/banners/UpdateBanner";
+import Contacts from "../pages/admin/contacts/Contacts";
+import UpdateContact from "../pages/admin/contacts/UpdateContact";
+import Slides from "../pages/admin/slides/Slides";
+import UpdateSlide from "../pages/admin/slides/UpdateSlides";
+import Blogs from "../pages/admin/blogs/Blogs";
+import UpdateBlog from "../pages/admin/blogs/UpdateBlog";
 export const ROUTES = [
   {
     path: "/",
@@ -38,7 +46,7 @@ export const ROUTES = [
         element: <Blog />,
       },
       {
-        path: "blog/blog-content",
+        path: "blog/:id",
         element: <BlogContent />,
       },
       {
@@ -110,6 +118,38 @@ export const ROUTES = [
       {
         path: "add-category",
         element: <AddCategory />,
+      },
+      {
+        path: "banners",
+        element: <Banners />,
+      },
+      {
+        path: "banners/:id",
+        element: <UpdateBanner />,
+      },
+      {
+        path: "contacts",
+        element: <Contacts />,
+      },
+      {
+        path: "contacts/:id",
+        element: <UpdateContact />,
+      },
+      {
+        path: "slides",
+        element: <Slides />,
+      },
+      {
+        path: "slides/:id",
+        element: <UpdateSlide />,
+      },
+      {
+        path: "blogs",
+        element: <Blogs />,
+      },
+      {
+        path: "blogs/:id",
+        element: <UpdateBlog />,
       },
     ],
   },
