@@ -1,33 +1,33 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { deleteCategoryById, getCategories, updateCategoryById } from '../api/requests';
+import { deleteBannerById, getBanners, updateBannerById } from '../api/requests';
 
-const CategoryContext = createContext();
+const BannerContext = createContext();
 
 
-const CategoryContextProvider = ({ children }) => {
-    const deleteCategory = async (id) => {
-        await deleteCategoryById(id);
+const BannerContextProvider = ({ children }) => {
+    const deleteBanner = async (id) => {
+        await deleteBannerById(id);
     }
-    const updateCategory = async (category) => {
-        await updateCategoryById(category);
+    const updateBanner = async (banner) => {
+        await updateBannerById(banner);
     }
-    const [categories, setCategories] = useState([]);
+    const [banners, setBanners] = useState([]);
     useEffect(() => {
-        getCategories()
+        getBanners()
             .then(data => {
-                setCategories(data)
+                setBanners(data)
             });
     }, []);
 
 
     const value = {
-        categories,
-        deleteCategory,
-        updateCategory
+        banners,
+        deleteBanner,
+        updateBanner
     };
 
 
-    return <CategoryContext.Provider value={value}>{children}</CategoryContext.Provider>;
+    return <BannerContext.Provider value={value}>{children}</BannerContext.Provider>;
 };
 
-export { CategoryContext, CategoryContextProvider };
+export { BannerContext, BannerContextProvider };
