@@ -1,12 +1,19 @@
-import { faEnvelope, faLocationPin, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faContactBook, faEnvelope, faLocationPin, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../../components/head/Header'
 import headBack2 from "../../../assets/image/headBack2.webp"
 import ContactInfo from './ContactInfo'
 import swal from 'sweetalert';
 import "../../../assets/style/googleMap.css"
+import { ContactContext } from '../../../context/ContactContext'
 export default function Contact() {
+    const { contacts } = useContext(ContactContext);
+    const [contactData, setContactData] = useState([])
+    useEffect(() => {
+        setContactData(contacts)
+    }, [contacts])
+    
     const [characterLength, setCharacterLength] = useState("");
     const emailRequired = true;
     const sweetAlert = (e) => {
@@ -17,10 +24,11 @@ export default function Contact() {
         });
         e.preventDefault();
     }
+    const icons = [faLocationPin,faPhone,faEnvelope]
     return (
         <section>
-            <Header pageName="Contact" backgroundImage={headBack2} /><br /><br /><br /><br /><br />
-            <div className='d-flex justify-content-center'>
+            <Header pageName="Contact" backgroundImage={headBack2} />
+            <div className='d-flex justify-content-center mt-5 pt-5'>
                 <div className='w-75 row'>
                     <div className='col-lg-6 border border-secondary d-flex justify-content-center p-5'>
                         <form className='w-100 px-4' onSubmit={sweetAlert}>
@@ -33,9 +41,11 @@ export default function Contact() {
                         </form>
                     </div>
                     <div className='col-lg-6 d-flex flex-column justify-content-center border border-secondary'>
-                        <ContactInfo contactIcon={faLocationPin} contactHead="Address" contactInfo="Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US" textColor="text-muted" />
-                        <ContactInfo contactIcon={faPhone} contactHead="Lets Talk" contactInfo="+1 800 1236879" textColor="text-primary" />
-                        <ContactInfo contactIcon={faEnvelope} contactHead="Address" contactInfo="contact@example.com" textColor="text-primary" />
+                        {
+                            contactData.map((contact,index) =>(
+                                <ContactInfo contactIcon={icons[index]?icons[index]:faContactBook} contactHead={contact.communication} contactInfo={contact.information} index={index}/>
+                            ))
+                        }
                     </div>
                 </div>
             </div><br /><br /><br /><br /><br />

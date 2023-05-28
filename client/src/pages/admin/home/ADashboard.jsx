@@ -8,8 +8,8 @@ import { CategoryContext } from '../../../context/CategoryContext'
 
 const ADashboard = () => {
   const { basicData } = useContext(CardContext);
-    const { users } = useContext(UserContext);
-    const { categories } = useContext(CategoryContext);
+  const { users } = useContext(UserContext);
+  const { categories } = useContext(CategoryContext);
   return (
     <div className='d-flex justify-content-center py-5'>
       <div className='w-75 text-start'>
@@ -31,10 +31,10 @@ const ADashboard = () => {
           <div className='col-12 col-md-6 mt-5'>
             <h5 className='text-center fs-3'>Admins can do:</h5>
             <ul className='list-group fs-5 mt-4'>
-              <li className='list-group-item'> <FontAwesomeIcon icon={faArrowDown} /> <span className='text-danger'>Delete</span> user/card/category</li>
-              <li className='list-group-item'> <FontAwesomeIcon icon={faArrowTrendUp} /> <span className='text-warning'>Update</span> user/card/category</li>
-              <li className='list-group-item'> <FontAwesomeIcon icon={faArrowUp} /> <span className='text-success'>Add</span> user/card/category</li>
-              <li className='list-group-item'> <FontAwesomeIcon icon={faArrowTrendUp} /> <span className='text-primary'>Add/Remove</span> Slides/banners</li>
+              <li className='list-group-item'> <FontAwesomeIcon className='me-4' icon={faArrowDown} /> <span className='text-danger'>Delete</span> user/card/category</li>
+              <li className='list-group-item'> <FontAwesomeIcon className='me-4' icon={faArrowTrendUp} /> <span className='text-warning'>Update</span> user/card/category</li>
+              <li className='list-group-item'> <FontAwesomeIcon className='me-4' icon={faArrowUp} /> <span className='text-success'>Add</span> card/category</li>
+              <li className='list-group-item'> <FontAwesomeIcon className='me-4' icon={faArrowTrendUp} /> <span className='text-primary'>Add/Remove/Update</span> slides/banners/contacts</li>
             </ul>
           </div>
         </div>

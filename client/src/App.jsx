@@ -8,18 +8,39 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { ROUTES } from "./routes/routes";
 import { UserContextProvider } from "./context/UserContext";
 import { CategoryContextProvider } from "./context/CategoryContext";
+import { ContactContextProvider } from "./context/ContactContext";
+import { SlideContextProvider } from "./context/SlideContext";
+import { BannerContextProvider } from "./context/BannerContext";
 
 const router = createBrowserRouter(ROUTES)
 
 function App() {
   return (
     <UserContextProvider>
+
       <CategoryContextProvider>
+
         <CardContextProvider>
-          <ScrollTop />
-          <RouterProvider router={router} />
+
+          <ContactContextProvider>
+
+            <SlideContextProvider>
+
+              <BannerContextProvider>
+
+                <ScrollTop />
+                <RouterProvider router={router} />
+
+              </BannerContextProvider>
+
+            </SlideContextProvider>
+
+          </ContactContextProvider>
+
         </CardContextProvider>
+
       </CategoryContextProvider>
+
     </UserContextProvider>
   );
 }
