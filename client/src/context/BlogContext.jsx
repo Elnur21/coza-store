@@ -8,8 +8,8 @@ const BlogContextProvider = ({ children }) => {
     const deleteBlog = async (id) => {
         await deleteBlogById(id);
     }
-    const updateBlog = async (blog) => {
-        await updateBlogById(blog);
+    const updateBlog = async (blog, id) => {
+        await updateBlogById(blog, id);
     }
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {

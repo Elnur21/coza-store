@@ -21,8 +21,16 @@ const Slides = () => {
         }));
     };
     const navigate = useNavigate();
+    const [selectedFile, setSelectedFile] = useState(null);
+    const handleFileSelect = (e) => {
+        setSelectedFile(e.target.files[0]);
+    };
     const handleSubmit = () => {
-        createSlide(slide);
+        const formData = new FormData();
+        formData.append('imageFile', selectedFile);
+        formData.append('name', slide.name);
+        formData.append('description', slide.description);
+        createSlide(formData);
         navigate("/admin/slides");
         window.location.reload();
     };
@@ -95,17 +103,13 @@ const Slides = () => {
                         />
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text fs-5" id="inputGroup-sizing-default">
-                            Image URL
-                        </span>
                         <input
-                            value={slide.image}
                             name="image"
                             type="text"
                             className="form-control fs-5"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default"
-                            onChange={handleInputChange}
+                            onChange={handleFileSelect}
                         />
                     </div>
                     <button

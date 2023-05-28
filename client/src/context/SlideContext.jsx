@@ -8,8 +8,8 @@ const SlideContextProvider = ({ children }) => {
     const deleteSlide = async (id) => {
         await deleteSlideById(id);
     }
-    const updateSlide = async (slide) => {
-        await updateSlideById(slide);
+    const updateSlide = async (slide, id) => {
+        await updateSlideById(slide, id);
     }
     const [slides, setSlides] = useState([]);
     useEffect(() => {

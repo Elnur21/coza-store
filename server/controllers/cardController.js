@@ -14,7 +14,13 @@ exports.getAllCards = async (req, res) => {
 };
 exports.createCard = async (req, res) => {
   try {
-    const card = await Card.create(req.body);
+    const { name, price, category } = req.body;
+    const card = await Card.create({
+      name,
+      price,
+      category,
+      image:req.file.filename
+    });
     res.status(201).json(card);
   } catch (error) {
     res.status(400).json({
@@ -36,11 +42,11 @@ exports.deleteCard = async (req, res) => {
 };
 exports.updateCard = async (req, res) => {
   try {
-    const { name, image, price, category } = req.body;
+    const { name, price, category } = req.body;
     const card = await Card.findOne({ _id: req.params.id });
     console.log(card);
     card.name = name;
-    card.image = image;
+    card.image = req.file.filename;
     card.price = price;
     card.category = category;
     card.save();

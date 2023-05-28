@@ -2,7 +2,12 @@ const Slide = require("../models/Slide");
 
 exports.createSlide = async (req, res) => {
   try {
-    const slide = await Slide.create(req.body);
+    const { name, description } = req.body;
+    const slide = await Slide.create({
+      name,
+      description,
+      image: req.file.filename,
+    });
     res.status(201).json(slide);
   } catch (error) {
     res.status(400).json({
@@ -35,11 +40,11 @@ exports.deleteSlide = async (req, res) => {
 };
 exports.updateSlide = async (req, res) => {
   try {
-    const { name, description, image } = req.body;
+    const { name, description } = req.body;
     const slide = await Slide.findOne({ _id: req.params.id });
     slide.name = name;
     slide.description = description;
-    slide.image = image;
+    slide.image = req.file.filename;
     slide.save();
     res.status(200).json({
       updated: true,

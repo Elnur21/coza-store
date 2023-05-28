@@ -18,9 +18,18 @@ const AddCard = () => {
         }));
     };
     const navigate = useNavigate();
+    const [selectedFile, setSelectedFile] = useState(null);
+    const handleFileSelect = (e) => {
+        setSelectedFile(e.target.files[0]);
+    };
     const handleSubmit = async () => {
-        await createCard(card)
-        navigate("/admin/cards")
+        const formData = new FormData();
+        formData.append('imageFile', selectedFile);
+        formData.append('name', card.name);
+        formData.append('price', card.price);
+        formData.append('category', card.category);
+        await createCard(formData);
+        navigate("/admin/cards");
         window.location.reload();
     };
 
@@ -43,16 +52,13 @@ const AddCard = () => {
                         />
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text fs-5" id="inputGroup-sizing-default">
-                            Picture
-                        </span>
                         <input
                             name="image"
-                            type="text"
+                            type="file"
                             className="form-control fs-5"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default"
-                            onChange={handleInputChange}
+                            onChange={handleFileSelect}
                         />
                     </div>
                     <div class="input-group mb-3">

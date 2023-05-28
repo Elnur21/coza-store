@@ -87,8 +87,8 @@ const CardContextProvider = ({ children }) => {
   const deleteCard = async (id) => {
     await deleteCardById(id);
   }
-  const updateCard = async (category) => {
-    await updateCardById(category);
+  const updateCard = async (card, id) => {
+    await updateCardById(card, id);
   }
 
 
