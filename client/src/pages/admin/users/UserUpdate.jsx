@@ -20,6 +20,7 @@ const UserUpdate = () => {
     const handleSubmit = () => {
         updateUser(user)
         navigate("/admin/users")
+        window.location.reload();
     };
 
     return (

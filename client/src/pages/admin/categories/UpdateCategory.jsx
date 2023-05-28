@@ -20,6 +20,7 @@ const UpdateCategory = () => {
     const handleSubmit = () => {
         updateCategory(category)
         navigate("/admin/categories")
+        window.location.reload();
     };
 
     return (

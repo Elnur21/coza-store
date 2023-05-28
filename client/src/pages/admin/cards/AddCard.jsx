@@ -21,6 +21,7 @@ const AddCard = () => {
     const handleSubmit = async () => {
         await createCard(card)
         navigate("/admin/cards")
+        window.location.reload();
     };
 
     return (

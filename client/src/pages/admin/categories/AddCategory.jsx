@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { createCategory } from '../../../api/requests';
 
@@ -15,6 +15,7 @@ const AddCategory = () => {
     const handleSubmit = () => {
         createCategory(category)
         navigate("/admin/categories")
+        window.location.reload();
     };
 
     return (

@@ -1,11 +1,12 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { deleteCardById, getCards, updateCardById } from '../api/requests';
-import nextId from "react-id-generator";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { addCart, addLikes, deleteCardById, getCards, getUsers, removeCart, removeLikes, updateCardById } from '../api/requests';
+import { UserContext } from './UserContext';
 
 const CardContext = createContext();
 
 
 const CardContextProvider = ({ children }) => {
+  const { user, users, setUsers } = useContext(UserContext);
   const [searchModal, setSearchModal] = useState(true);
   const toggleModalSearch = () => {
     setSearchModal(!searchModal);
@@ -15,54 +16,73 @@ const CardContextProvider = ({ children }) => {
     setCartModal(!cartModal);
   };
   const [basicData, setBasicData] = useState([]);
+  const [myData, setMyData] = useState([]);
+  const [myLike, setMyLike] = useState([]);
   useEffect(() => {
     getCards()
       .then(data => {
         setBasicData(data)
       });
   }, []);
-  const [myData, setMyData] = useState([]);
-  const addToCart = (data) => {
+  useEffect(() => {
+    if (basicData.length !== 0 && user) {
+      setMyData(basicData.filter(card => (
+        user.cart.includes(card._id)
+      )))
+      setMyLike(basicData.filter(card => (
+        user.likes.includes(card._id)
+      )))
+    }
+  }, [basicData])
+  const addToCart = async (data) => {
+    await getUsers().then(d => {
+      setUsers(d)
+    });
+    var id = user._id
+    await addCart(data);
+    localStorage.setItem('user', JSON.stringify(users.filter(user => user._id === id)[0]))
     setMyData(
       [
         ...myData,
-        {
-          id: nextId(),
-          dataId: data.id,
-          name: data.name,
-          image: data.image,
-          price: data.price,
-          value: data.value
-        }
+        data
       ]
     )
   }
-  const removeFromCart = (data, mydata) => {
-    setMyData(mydata.filter(deck => deck.id !== data.id));
+  const removeFromCart = async (data) => {
+    await getUsers().then(d => {
+      setUsers(d)
+    });
+    var id = user._id
+    await removeCart(data)
+    localStorage.setItem('user', JSON.stringify(users.filter(user => user._id === id)[0]))
+    setMyData(myData.filter(deck => deck._id !== data._id));
   }
   const [likeModal, setLikeModal] = useState(true);
   const toggleModalLike = () => {
     setLikeModal(!likeModal);
   };
-  const [myLike, setMyLike] = useState([]);
-  const addToLike = (data) => {
+  const addToLike = async (data) => {
+    await getUsers().then(d => {
+      setUsers(d)
+    });
+    var id = user._id
+    await addLikes(data)
+    localStorage.setItem('user', JSON.stringify(users.filter(user => user._id === id)[0]))
     setMyLike(
       [
         ...myLike,
-        {
-          id: nextId(),
-          dataId: data.id,
-          name: data.name,
-          image: data.image,
-          price: data.price,
-          value: data.value
-        }
+        data
       ]
     )
   }
-  const removeFromLike = (data, mydata) => {
-    setMyLike(mydata.filter(deck => deck.id !== data.id));
-    console.log(myLike)
+  const removeFromLike = async (data) => {
+    await getUsers().then(d => {
+      setUsers(d)
+    });
+    var id = user._id
+    await removeLikes(data);
+    localStorage.setItem('user', JSON.stringify(users.filter(user => user._id === id)[0]))
+    setMyLike(myLike.filter(deck => deck._id !== data._id));
   }
   const deleteCard = async (id) => {
     await deleteCardById(id);
