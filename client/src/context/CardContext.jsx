@@ -6,7 +6,7 @@ const CardContext = createContext();
 
 
 const CardContextProvider = ({ children }) => {
-  const { user, setUser, users, setUsers } = useContext(UserContext);
+  const { user, users, setUsers } = useContext(UserContext);
   const [searchModal, setSearchModal] = useState(true);
   const toggleModalSearch = () => {
     setSearchModal(!searchModal);
@@ -25,7 +25,7 @@ const CardContextProvider = ({ children }) => {
       });
   }, []);
   useEffect(() => {
-    if (basicData.length != 0) {
+    if (basicData.length !== 0 && user) {
       setMyData(basicData.filter(card => (
         user.cart.includes(card._id)
       )))
@@ -33,12 +33,12 @@ const CardContextProvider = ({ children }) => {
         user.likes.includes(card._id)
       )))
     }
-  }, [basicData, user])
+  }, [basicData])
   const addToCart = async (data) => {
     await getUsers().then(d => {
       setUsers(d)
     });
-    const id = user._id
+    var id = user._id
     await addCart(data);
     localStorage.setItem('user', JSON.stringify(users.filter(user => user._id === id)[0]))
     setMyData(
@@ -52,7 +52,7 @@ const CardContextProvider = ({ children }) => {
     await getUsers().then(d => {
       setUsers(d)
     });
-    const id = user._id
+    var id = user._id
     await removeCart(data)
     localStorage.setItem('user', JSON.stringify(users.filter(user => user._id === id)[0]))
     setMyData(myData.filter(deck => deck._id !== data._id));
@@ -65,7 +65,7 @@ const CardContextProvider = ({ children }) => {
     await getUsers().then(d => {
       setUsers(d)
     });
-    const id = user._id
+    var id = user._id
     await addLikes(data)
     localStorage.setItem('user', JSON.stringify(users.filter(user => user._id === id)[0]))
     setMyLike(
@@ -79,7 +79,7 @@ const CardContextProvider = ({ children }) => {
     await getUsers().then(d => {
       setUsers(d)
     });
-    const id = user._id
+    var id = user._id
     await removeLikes(data);
     localStorage.setItem('user', JSON.stringify(users.filter(user => user._id === id)[0]))
     setMyLike(myLike.filter(deck => deck._id !== data._id));
