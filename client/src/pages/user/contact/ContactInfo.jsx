@@ -9,7 +9,7 @@ export default function ContactInfo({ contactIcon, contactHead, index, contactIn
             </div>
             <div className='w-50'>
                 <h4 className='mb-3'>{contactHead}</h4>
-                <p className={index < 1 ? "text-muted" : "text-primary"}>{contactInfo}</p>
+                <p className={(index < 3 && index>0) ? "text-primary" : "text-muted"}>{contactInfo}</p>
             </div>
         </div>
     )

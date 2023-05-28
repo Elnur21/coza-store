@@ -1,4 +1,4 @@
-import { faEnvelope, faLocationPin, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faContactBook, faEnvelope, faLocationPin, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../../components/head/Header'
@@ -43,7 +43,7 @@ export default function Contact() {
                     <div className='col-lg-6 d-flex flex-column justify-content-center border border-secondary'>
                         {
                             contactData.map((contact,index) =>(
-                                <ContactInfo contactIcon={icons[index]} contactHead={contact.communication} contactInfo={contact.information} index={index}/>
+                                <ContactInfo contactIcon={icons[index]?icons[index]:faContactBook} contactHead={contact.communication} contactInfo={contact.information} index={index}/>
                             ))
                         }
                     </div>
