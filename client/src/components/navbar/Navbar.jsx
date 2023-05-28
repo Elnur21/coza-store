@@ -237,6 +237,14 @@ export default function Navbar() {
                 <li>
                   <Link
                     className="text-decoration-none text-secondary"
+                    to="/admin/blogs"
+                  >
+                    Blogs
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="text-decoration-none text-secondary"
                     to="/admin/add-card"
                   >
                     Add New Card
@@ -436,6 +444,14 @@ export default function Navbar() {
                       to="/admin/contacts"
                     >
                       Contacts
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="text-decoration-none text-secondary"
+                      to="/admin/blogs"
+                    >
+                      Blogs
                     </Link>
                   </li>
                   <li>
