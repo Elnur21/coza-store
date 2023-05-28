@@ -11,6 +11,7 @@ import { CategoryContextProvider } from "./context/CategoryContext";
 import { ContactContextProvider } from "./context/ContactContext";
 import { SlideContextProvider } from "./context/SlideContext";
 import { BannerContextProvider } from "./context/BannerContext";
+import { BlogContextProvider } from "./context/BlogContext";
 
 const router = createBrowserRouter(ROUTES)
 
@@ -28,8 +29,12 @@ function App() {
 
               <BannerContextProvider>
 
-                <ScrollTop />
-                <RouterProvider router={router} />
+                <BlogContextProvider>
+
+                  <ScrollTop />
+                  <RouterProvider router={router} />
+
+                </BlogContextProvider>
 
               </BannerContextProvider>
 

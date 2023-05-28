@@ -187,3 +187,34 @@ export const createContact = async (formData) => {
       console.error(error);
     });
 };
+
+//blog
+export const getBlogs = async () => {
+  return await axios
+    .get(`${baseUrl}/blog`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export const deleteBlogById = async (id) => {
+  return await axios.delete(`${baseUrl}/blog/${id}`);
+};
+export const updateBlogById = async (blog) => {
+  return await axios.put(`${baseUrl}/blog/${blog._id}`, blog);
+};
+export const addComment = async (blog) => {
+  return await axios.put(`${baseUrl}/blog/add/${blog._id}`,blog);
+};
+export const createBlog = async (formData) => {
+  await axios
+    .post(`${baseUrl}/blog`, formData)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};

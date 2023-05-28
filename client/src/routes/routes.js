@@ -44,7 +44,7 @@ export const ROUTES = [
         element: <Blog />,
       },
       {
-        path: "blog/blog-content",
+        path: "blog/:id",
         element: <BlogContent />,
       },
       {

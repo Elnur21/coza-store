@@ -315,7 +315,7 @@ export default function Shop() {
           }
         </div>
         <div className="d-flex justify-content-center mt-5 pt-3">
-          <button className="btn btn-secondary text-dark rounded-pill px-5 py-2">
+          <button className="btn btn-secondary text-dark rounded-pill px-5 py-2 text-white">
             LOAD MORE
           </button>
         </div>

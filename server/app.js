@@ -12,6 +12,7 @@ const userRoutes = require("./routes/userRoutes");
 const bannerRoutes = require("./routes/bannerRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const slideRoutes = require("./routes/slideRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 
 // variables
 const port = 8080;
@@ -61,6 +62,7 @@ app.use("/user", userRoutes);
 app.use("/slide", slideRoutes);
 app.use("/contact", contactRoutes);
 app.use("/banner", bannerRoutes);
+app.use("/blog", blogRoutes);
 app.use("/user/login", (req, res, next) => {
   userIN = req.session.userID;
   next();
