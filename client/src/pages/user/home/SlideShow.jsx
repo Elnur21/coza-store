@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -9,7 +9,13 @@ import SlideContent from './SlideContent';
 import slide1 from "../../../assets/image/slide1.webp"
 import slide2 from "../../../assets/image/slide2.webp"
 import slide3 from "../../../assets/image/slide3.webp"
+import { SlideContext } from '../../../context/SlideContext';
 export default function SlideShow() {
+  const { slides } = useContext(SlideContext);
+  const [slideData, setSlideData] = useState([])
+  useEffect(() => {
+    setSlideData(slides)
+  }, [slides])
   return (
     <>
       <Swiper
@@ -19,15 +25,13 @@ export default function SlideShow() {
         }}
         modules={[EffectFade, Autoplay, Navigation]}
       >
-        <SwiperSlide style={{ backgroundImage: `url(${slide1})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
-          <SlideContent info="Men New-Seasion" name="JACKETS & COATS" />
-        </SwiperSlide>
-        <SwiperSlide style={{ backgroundImage: `url(${slide3})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
-          <SlideContent info="Women Collection 2018" name="NEW SEASON" />
-        </SwiperSlide>
-        <SwiperSlide style={{ backgroundImage: `url(${slide2})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
-          <SlideContent info="Men Collection 2018" name="NEW ARRIALS" />
-        </SwiperSlide>
+        {
+          slideData.map(slide => (
+            <SwiperSlide style={{ backgroundImage: `url(${slide.image})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
+              <SlideContent info={slide.description} name={slide.name} />
+            </SwiperSlide>
+          ))
+        }
       </Swiper>
     </>
   )
