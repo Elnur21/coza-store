@@ -20,6 +20,8 @@ import Cards from "../pages/admin/cards/Cards";
 import CardUpdate from "../pages/admin/cards/UpdateCard";
 import AddCard from "../pages/admin/cards/AddCard";
 import AddCategory from "../pages/admin/categories/AddCategory";
+import Banners from "../pages/admin/banners/Banners";
+import UpdateBanner from "../pages/admin/banners/UpdateBanner";
 export const ROUTES = [
   {
     path: "/",
@@ -110,6 +112,14 @@ export const ROUTES = [
       {
         path: "add-category",
         element: <AddCategory />,
+      },
+      {
+        path: "banners",
+        element: <Banners />,
+      },
+      {
+        path: "banners/:id",
+        element: <UpdateBanner />,
       },
     ],
   },
