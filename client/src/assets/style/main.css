@@ -31,13 +31,13 @@ input::-webkit-inner-spin-button {
 .start-75 {
   left: 75%;
 }
-/* .navigations {
-  background-color: white;
-  top: 0;
+.navigations{
+  background-color: white !important;
+  top: 0px !important;
   position: fixed !important;
   width: 100%;
   z-index: 100;
-} */
+}
 .activLink, ul li a:hover{
   color: blue !important;
   border-bottom: 1px solid blue;

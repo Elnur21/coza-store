@@ -14,6 +14,12 @@ import { UserContext } from "../../context/UserContext";
 import { logOutUser } from "../../api/requests";
 
 export default function Navbar() {
+  const [scrollTop, setScrollTop] = useState(0);
+  const handleScroll = () => {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    setScrollTop(scrollY)
+  };
+  
   const {
     toggleModalCart,
     toggleModalSearch,
@@ -31,6 +37,7 @@ export default function Navbar() {
 
 
   useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
     function handleWindowResize() {
       setWindowSize(getWindowSize());
     }
@@ -328,7 +335,7 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-      <nav className={`${windowSize.innerWidth >= 992 ? " " : " d-none"}`}>
+      <nav className={`${windowSize.innerWidth >= 992 ? "  position-relative" : " d-none"}`}>
         <div className={`bg-dark d-flex justify-content-center`}>
           <div className="d-flex justify-content-between  w-75">
             <div className=" d-flex align-items-center text-secondary">
@@ -389,7 +396,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-        <div className={`d-flex justify-content-center`}>
+        <div className={`d-flex justify-content-center w-100 ${scrollTop>=200?"navigations":" "}`}>
           <div className="d-flex mt-4 w-75 justify-content-between">
             <div className="d-flex">
               <Link to={user.role === "admin" ? "/admin" : "/"}>
