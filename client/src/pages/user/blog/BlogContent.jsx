@@ -11,7 +11,7 @@ export default function BlogContent() {
   const [blog, setBlog] = useState({});
   useEffect(() => {
     setBlog(blogs.filter((blog) => blog._id === id)[0]);
-  }, [blogs]);
+  }, [blogs,id]);
   const date = new Date(blog.dateCreated);
   const imageUrl = baseUrl + '/uploads/' + blog.image;
   

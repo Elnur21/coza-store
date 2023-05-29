@@ -1,6 +1,8 @@
 const Banner = require("../models/Banner");
 const fs = require("fs");
+const path = require("path");
 
+const parentPath = path.join(__dirname, "..");
 
 exports.createBanner = async (req, res) => {
   try {
@@ -31,8 +33,16 @@ exports.getAllBanners = async (req, res) => {
 };
 exports.deleteBanner = async (req, res) => {
   try {
-    await Banner.findOneAndRemove({ _id: req.params.id });
-    res.status(200).send("Banner has been deleted");
+    const banner = await Banner.findById(req.params.id);
+    let deletedImage = parentPath + "/uploads/" + banner.image;
+    fs.unlink(deletedImage, async (err) => {
+      if (err) {
+        console.error("Error deleting image:", err);
+      } else {
+        await Banner.findOneAndDelete({ _id: req.params.id });
+        res.status(200).send("Banner has been deleted");
+      }
+    });
   } catch (error) {
     res.status(400).json({
       status: "fail",

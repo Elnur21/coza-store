@@ -34,6 +34,9 @@ const Slides = () => {
         navigate("/admin/slides");
         window.location.reload();
     };
+    if(slidesData.length ===0){
+        return <div className='text-center fs-3 py-5'>There are not any slides</div>
+    }
 
     return (
         <div className="d-flex align-items-center flex-column py-5">

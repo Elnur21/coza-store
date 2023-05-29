@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import FeatureTableContent from "./FeatureTableContent";
-import table1 from "../../../assets/image/table1.webp";
-import table2 from "../../../assets/image/table2.webp";
 import { CardContext } from '../../../context/CardContext';
 
 export default function Features() {

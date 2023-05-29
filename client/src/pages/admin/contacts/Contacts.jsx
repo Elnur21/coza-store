@@ -26,7 +26,9 @@ const Contacts = () => {
         navigate("/admin/contacts");
         window.location.reload();
     };
-
+    if(contactsData.length ===0){
+        return <div className='text-center fs-3 py-5'>There are not any contacts</div>
+    }
     return (
         <div className="d-flex align-items-center flex-column py-5">
             <div className="w-50">

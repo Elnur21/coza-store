@@ -34,6 +34,9 @@ const Banners = () => {
         navigate("/admin/banners");
         window.location.reload();
     };
+    if(bannersData.length ===0){
+        return <div className='text-center fs-3 py-5'>There are not any banners</div>
+    }
 
     return (
         <div className="d-flex align-items-center flex-column py-5">

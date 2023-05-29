@@ -25,7 +25,7 @@ export default function SlideShow() {
       >
         {
           slideData.map(slide => (
-            <SwiperSlide style={{ backgroundImage: `url(${baseUrl}'/uploads/'${slide.image})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
+            <SwiperSlide style={{ backgroundImage: "url("+baseUrl+"/uploads/"+slide.image+")", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
               <SlideContent info={slide.description} name={slide.name} />
             </SwiperSlide>
           ))

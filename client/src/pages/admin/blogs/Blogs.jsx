@@ -34,7 +34,9 @@ const Blogs = () => {
         navigate("/admin/blogs");
         window.location.reload();
     };
-
+    if(blogsData.length ===0){
+        return <div className='text-center fs-3 py-5'>There are not any blogs</div>
+    }
     return (
         <div className="d-flex align-items-center flex-column py-5">
             <div className="w-75">

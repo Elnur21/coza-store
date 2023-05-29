@@ -1,5 +1,9 @@
+const fs = require("fs");
+const path = require("path");
+
 const Card = require("../models/Card");
 const User = require("../models/User");
+const parentPath = path.join(__dirname, "..");
 
 exports.getAllCards = async (req, res) => {
   try {
@@ -19,7 +23,7 @@ exports.createCard = async (req, res) => {
       name,
       price,
       category,
-      image:req.file.filename
+      image: req.file.filename,
     });
     res.status(201).json(card);
   } catch (error) {
@@ -31,8 +35,16 @@ exports.createCard = async (req, res) => {
 };
 exports.deleteCard = async (req, res) => {
   try {
-    await Card.findOneAndRemove({ _id: req.params.id });
-    res.status(200).send("card has been deleted");
+    const card = await Card.findById(req.params.id);
+    let deletedImage = parentPath + "/uploads/" + card.image;
+    fs.unlink(deletedImage, async (err) => {
+      if (err) {
+        console.error("Error deleting image:", err);
+      } else {
+        await Card.findOneAndDelete({ _id: req.params.id });
+        res.status(200).send("card has been deleted");
+      }
+    });
   } catch (error) {
     res.status(400).json({
       status: "fail",
