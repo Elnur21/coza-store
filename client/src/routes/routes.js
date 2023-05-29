@@ -26,6 +26,8 @@ import Contacts from "../pages/admin/contacts/Contacts";
 import UpdateContact from "../pages/admin/contacts/UpdateContact";
 import Slides from "../pages/admin/slides/Slides";
 import UpdateSlide from "../pages/admin/slides/UpdateSlides";
+import Blogs from "../pages/admin/blogs/Blogs";
+import UpdateBlog from "../pages/admin/blogs/UpdateBlog";
 export const ROUTES = [
   {
     path: "/",
@@ -44,7 +46,7 @@ export const ROUTES = [
         element: <Blog />,
       },
       {
-        path: "blog/blog-content",
+        path: "blog/:id",
         element: <BlogContent />,
       },
       {
@@ -140,6 +142,14 @@ export const ROUTES = [
       {
         path: "slides/:id",
         element: <UpdateSlide />,
+      },
+      {
+        path: "blogs",
+        element: <Blogs />,
+      },
+      {
+        path: "blogs/:id",
+        element: <UpdateBlog />,
       },
     ],
   },

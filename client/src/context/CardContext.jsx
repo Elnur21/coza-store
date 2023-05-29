@@ -33,7 +33,7 @@ const CardContextProvider = ({ children }) => {
         user.likes.includes(card._id)
       )))
     }
-  }, [basicData])
+  }, [basicData,user])
   const addToCart = async (data) => {
     await getUsers().then(d => {
       setUsers(d)
@@ -87,8 +87,8 @@ const CardContextProvider = ({ children }) => {
   const deleteCard = async (id) => {
     await deleteCardById(id);
   }
-  const updateCard = async (category) => {
-    await updateCardById(category);
+  const updateCard = async (card, id) => {
+    await updateCardById(card, id);
   }
 
 

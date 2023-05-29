@@ -27,12 +27,13 @@ export default function Navbar() {
     setHamburgerMenu(!hamburgerMenu);
   };
   const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [currentURL, setCurrentURL] = useState("/");
+
 
   useEffect(() => {
     function handleWindowResize() {
       setWindowSize(getWindowSize());
     }
-
     window.addEventListener("resize", handleWindowResize);
 
     return () => {
@@ -42,8 +43,7 @@ export default function Navbar() {
   return (
     <div>
       <nav
-        className={`navbar navbar-expand-lg navbar-light w-100 ${windowSize.innerWidth >= 992 ? " d-none" : " "
-          }`}
+        className={`navbar navbar-expand-lg navbar-light w-100 ${windowSize.innerWidth >= 992 ? " d-none" : " "}`}
       >
         <div className="container-fluid w-100 mx-0 px-0">
           <Link
@@ -116,7 +116,7 @@ export default function Navbar() {
                   {user.role === "admin"
                     ? "You are responsiple for every change"
                     : "Free shipping for standard order over $100"}
-                </div>{" "}
+                </div>
                 <hr className="text-muted" />
                 <div className="">
                   <ul
@@ -177,74 +177,82 @@ export default function Navbar() {
               </div>
             </div>
             {user.role === "admin" ? (
-              <ul type="none" className="d-flex gap-4">
-                <li>
+              <ul type="none" className="px-3 navbar-nav me-auto mb-2 mb-lg-0 p-3 bg-primary">
+                <li onClick={() => setCurrentURL("/admin")}>
                   <Link
-                    className="text-decoration-none text-secondary"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/admin' ? " activLink" : "")}
                     to="/admin"
                   >
                     Dashboard
                   </Link>
                 </li>
-                <li>
+                <li onClick={() => setCurrentURL("/admin/users")}>
                   <Link
-                    className="text-decoration-none text-secondary"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/admin/users' ? " activLink" : "")}
                     to="/admin/users"
                   >
                     Users
                   </Link>
                 </li>
-                <li>
+                <li onClick={() => setCurrentURL("/admin/cards")}>
                   <Link
-                    className="text-decoration-none text-secondary"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/admin/cards' ? " activLink" : "")}
                     to="/admin/cards"
                   >
                     Cards
                   </Link>
                 </li>
-                <li>
+                <li onClick={() => setCurrentURL("/admin/categories")}>
                   <Link
-                    className="text-decoration-none text-secondary"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/admin/categories' ? " activLink" : "")}
                     to="/admin/categories"
                   >
                     Categories
                   </Link>
                 </li>
-                <li>
+                <li onClick={() => setCurrentURL("/admin/banners")}>
                   <Link
-                    className="text-decoration-none text-secondary"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/admin/banners' ? " activLink" : "")}
                     to="/admin/banners"
                   >
                     Banners
                   </Link>
                 </li>
-                <li>
+                <li onClick={() => setCurrentURL("/admin/slides")}>
                   <Link
-                    className="text-decoration-none text-secondary"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/admin/slides' ? " activLink" : "")}
                     to="/admin/slides"
                   >
                     Slides
                   </Link>
                 </li>
-                <li>
+                <li onClick={() => setCurrentURL("/admin/contacts")}>
                   <Link
-                    className="text-decoration-none text-secondary"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/admin/contacts' ? " activLink" : "")}
                     to="/admin/contacts"
                   >
                     Contacts
                   </Link>
                 </li>
-                <li>
+                <li onClick={() => setCurrentURL("/admin/blogs")}>
                   <Link
-                    className="text-decoration-none text-secondary"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/admin/blogs' ? " activLink" : "")}
+                    to="/admin/blogs"
+                  >
+                    Blogs
+                  </Link>
+                </li>
+                <li onClick={() => setCurrentURL("/admin/add-card")}>
+                  <Link
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/admin/add-card' ? " activLink" : "")}
                     to="/admin/add-card"
                   >
                     Add New Card
                   </Link>
                 </li>
-                <li>
+                <li onClick={() => setCurrentURL("/admin/add-category")}>
                   <Link
-                    className="text-decoration-none text-secondary"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/admin/add-category' ? " activLink" : "")}
                     to="/admin/add-category"
                   >
                     Add New Category
@@ -254,20 +262,19 @@ export default function Navbar() {
             ) : (
               <ul
                 type="none"
-                className="px-3 navbar-nav me-auto mb-2 mb-lg-0 pt-2 bg-primary"
+                className="px-3 navbar-nav me-auto mb-2 mb-lg-0 p-3 bg-primary"
               >
-                <li className="nav-item active">
+                <li className="nav-item active" onClick={() => setCurrentURL("/")}>
                   <Link
-                    className="nav-link text-decoration-none text-white fw-bold"
-                    aria-current="page"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/' ? " activLink" : "")}
                     to="/"
                   >
                     Home
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" onClick={() => setCurrentURL("/shop")}>
                   <Link
-                    className="nav-link text-decoration-none text-white fw-bold"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/shop' ? " activLink" : "")}
                     to="/shop"
                   >
                     Shop
@@ -276,9 +283,9 @@ export default function Navbar() {
                 {user.role === "unlogged" ? (
                   <li className="d-none"></li>
                 ) : (
-                  <li className="nav-item d-flex">
+                  <li className="nav-item d-flex" onClick={() => setCurrentURL("/features")}>
                     <Link
-                      className="nav-link text-decoration-none text-white fw-bold"
+                      className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/features' ? " activLink" : "")}
                       to="/features"
                     >
                       Features
@@ -288,25 +295,25 @@ export default function Navbar() {
                     </span>
                   </li>
                 )}
-                <li className="nav-item">
+                <li className="nav-item" onClick={() => setCurrentURL("/blog")}>
                   <Link
-                    className="nav-link text-decoration-none text-white fw-bold"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/blog' ? " activLink" : "")}
                     to="/blog"
                   >
                     Blog
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" onClick={() => setCurrentURL("/about")}>
                   <Link
-                    className="nav-link text-decoration-none text-white fw-bold"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/about' ? " activLink" : "")}
                     to="/about"
                   >
                     About
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" onClick={() => setCurrentURL("/contact")}>
                   <Link
-                    className="nav-link text-decoration-none text-white fw-bold"
+                    className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/contact' ? " activLink" : "")}
                     to="/contact"
                   >
                     Contact
@@ -382,73 +389,81 @@ export default function Navbar() {
               </Link>
               {user.role === "admin" ? (
                 <ul type="none" className="d-flex gap-4">
-                  <li>
+                  <li onClick={() => setCurrentURL("/admin")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/admin' ? " activLink" : "")}
                       to="/admin"
                     >
                       Dashboard
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setCurrentURL("/admin/users")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/admin/users' ? " activLink" : "")}
                       to="/admin/users"
                     >
                       Users
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setCurrentURL("/admin/cards")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/admin/cards' ? " activLink" : "")}
                       to="/admin/cards"
                     >
                       Cards
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setCurrentURL("/admin/categories")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/admin/categories' ? " activLink" : "")}
                       to="/admin/categories"
                     >
                       Categories
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setCurrentURL("/admin/banners")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/admin/banners' ? " activLink" : "")}
                       to="/admin/banners"
                     >
                       Banners
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setCurrentURL("/admin/slides")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/admin/slides' ? " activLink" : "")}
                       to="/admin/slides"
                     >
                       Slides
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setCurrentURL("/admin/contacts")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/admin/contacts' ? " activLink" : "")}
                       to="/admin/contacts"
                     >
                       Contacts
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setCurrentURL("/admin/blogs")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/admin/blogs' ? " activLink" : "")}
+                      to="/admin/blogs"
+                    >
+                      Blogs
+                    </Link>
+                  </li>
+                  <li onClick={() => setCurrentURL("/admin/add-card")}>
+                    <Link
+                      className={"text-decoration-none text-secondary" + (currentURL === '/admin/add-card' ? " activLink" : "")}
                       to="/admin/add-card"
                     >
                       Add New Card
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setCurrentURL("/admin/add-category")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/admin/add-category' ? " activLink" : "")}
                       to="/admin/add-category"
                     >
                       Add New Category
@@ -457,17 +472,17 @@ export default function Navbar() {
                 </ul>
               ) : (
                 <ul type="none" className="d-flex gap-4">
-                  <li>
+                  <li onClick={() => setCurrentURL("/")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/' ? " activLink" : "")}
                       to="/"
                     >
                       Home
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setCurrentURL("/shop")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/shop' ? " activLink" : "")}
                       to="/shop"
                     >
                       Shop
@@ -476,9 +491,9 @@ export default function Navbar() {
                   {user.role === "unlogged" ? (
                     <li className="d-none"></li>
                   ) : (
-                    <li className="position-relative">
+                    <li className="position-relative" onClick={() => setCurrentURL("/features")}>
                       <Link
-                        className="text-decoration-none text-secondary"
+                        className={"text-decoration-none text-secondary" + (currentURL === '/features' ? " activLink" : "")}
                         to="/features"
                       >
                         Features
@@ -488,25 +503,25 @@ export default function Navbar() {
                       </span>
                     </li>
                   )}
-                  <li>
+                  <li onClick={() => setCurrentURL("/blog")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/blog' ? " activLink" : "")}
                       to="/blog"
                     >
                       Blog
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setCurrentURL("/about")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/about' ? " activLink" : "")}
                       to="/about"
                     >
                       About
                     </Link>
                   </li>
-                  <li>
+                  <li onClick={() => setCurrentURL("/contact")}>
                     <Link
-                      className="text-decoration-none text-secondary"
+                      className={"text-decoration-none text-secondary" + (currentURL === '/contact' ? " activLink" : "")}
                       to="/contact"
                     >
                       Contact
