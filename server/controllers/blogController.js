@@ -1,8 +1,17 @@
 const Blog = require("../models/Blog");
+const fs = require("fs");
+const path = require("path");
+
+const parentPath = path.join(__dirname, "..");
 
 exports.createBlog = async (req, res) => {
   try {
-    const blog = await Blog.create(req.body);
+    const { name, description } = req.body;
+    const blog = await Blog.create({
+      name,
+      description,
+      image: req.file.filename,
+    });
     res.status(201).json(blog);
   } catch (error) {
     res.status(400).json({
@@ -24,8 +33,16 @@ exports.getAllBlogs = async (req, res) => {
 };
 exports.deleteBlog = async (req, res) => {
   try {
-    await Blog.findOneAndRemove({ _id: req.params.id });
-    res.status(200).send("Blog has been deleted");
+    const blog = await Blog.findById(req.params.id);
+    let deletedImage = parentPath + "/uploads/" + blog.image;
+    fs.unlink(deletedImage, async (err) => {
+      if (err) {
+        console.error("Error deleting image:", err);
+      } else {
+        await Blog.findOneAndDelete({ _id: req.params.id });
+        res.status(200).send("Blog has been deleted");
+      }
+    });
   } catch (error) {
     res.status(400).json({
       status: "fail",
@@ -35,11 +52,11 @@ exports.deleteBlog = async (req, res) => {
 };
 exports.updateBlog = async (req, res) => {
   try {
-    const { name, description, image } = req.body;
+    const { name, description } = req.body;
     const blog = await Blog.findOne({ _id: req.params.id });
     blog.name = name;
     blog.description = description;
-    blog.image = image;
+    blog.image = req.file.filename;
     blog.save();
     res.status(200).json({
       updated: true,
@@ -53,18 +70,18 @@ exports.updateBlog = async (req, res) => {
   }
 };
 exports.addComment = async (req, res) => {
-    try {
-      const blog = await Blog.findOne({ _id: req.params.id });
-      blog.comments += 1;
-      blog.save();
-      res.status(200).json({
-        updated: true,
-        blog,
-      });
-    } catch (error) {
-      res.status(400).json({
-        status: "fail",
-        error,
-      });
-    }
-  };
+  try {
+    const blog = await Blog.findOne({ _id: req.params.id });
+    blog.comments += 1;
+    blog.save();
+    res.status(200).json({
+      updated: true,
+      blog,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "fail",
+      error,
+    });
+  }
+};

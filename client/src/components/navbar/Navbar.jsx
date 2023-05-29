@@ -116,7 +116,7 @@ export default function Navbar() {
                   {user.role === "admin"
                     ? "You are responsiple for every change"
                     : "Free shipping for standard order over $100"}
-                </div>{" "}
+                </div>
                 <hr className="text-muted" />
                 <div className="">
                   <ul
@@ -177,7 +177,7 @@ export default function Navbar() {
               </div>
             </div>
             {user.role === "admin" ? (
-              <ul type="none" className="d-flex gap-4">
+              <ul type="none" className="px-3 navbar-nav me-auto mb-2 mb-lg-0 p-3 bg-primary">
                 <li onClick={() => setCurrentURL("/admin")}>
                   <Link
                     className={"nav-link text-decoration-none text-white fw-bold" + (currentURL === '/admin' ? " activLink" : "")}
@@ -262,7 +262,7 @@ export default function Navbar() {
             ) : (
               <ul
                 type="none"
-                className="px-3 navbar-nav me-auto mb-2 mb-lg-0 pt-2 bg-primary"
+                className="px-3 navbar-nav me-auto mb-2 mb-lg-0 p-3 bg-primary"
               >
                 <li className="nav-item active" onClick={() => setCurrentURL("/")}>
                   <Link

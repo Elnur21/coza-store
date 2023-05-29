@@ -6,6 +6,7 @@ import ShopModal from "../../../components/modals/ShopModal";
 import { useState } from "react";
 import { faHeartCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../../../context/UserContext";
+import { baseUrl } from "../../../api/base_url";
 export default function ShopContent(props) {
   const { user } = useContext(UserContext);
   const [shopModal, setShopModal] = useState(false);
@@ -20,6 +21,8 @@ export default function ShopContent(props) {
     props.setLikes(props.likes.filter(deck => deck.dataId !== props.myOrder.id));
     console.log(props.likes)
   }
+  const imageUrl = baseUrl + '/uploads/' + props.cardImage;
+
   return (
     <div className={`card bg-transparent border-0 ${props.class}`}>
       <ShopModal
@@ -30,7 +33,7 @@ export default function ShopContent(props) {
       />
       <div className="buttonHover">
         <img
-          src={props.cardImage}
+          src={imageUrl}
           className="card-img-top"
           alt="card_image"
         />

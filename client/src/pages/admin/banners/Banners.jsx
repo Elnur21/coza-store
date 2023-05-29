@@ -21,11 +21,22 @@ const Banners = () => {
         }));
     };
     const navigate = useNavigate();
+    const [selectedFile, setSelectedFile] = useState(null);
+    const handleFileSelect = (e) => {
+        setSelectedFile(e.target.files[0]);
+    };
     const handleSubmit = () => {
-        createBanner(banner);
+        const formData = new FormData();
+        formData.append('imageFile', selectedFile);
+        formData.append('name', banner.name);
+        formData.append('description', banner.description);
+        createBanner(formData);
         navigate("/admin/banners");
         window.location.reload();
     };
+    if(bannersData.length ===0){
+        return <div className='text-center fs-3 py-5'>There are not any banners</div>
+    }
 
     return (
         <div className="d-flex align-items-center flex-column py-5">
@@ -65,7 +76,7 @@ const Banners = () => {
             </div>
             <div className="w-75 d-flex align-items-center flex-column gap-3 mt-5">
                 <h2 className="text-center fw-bold display-6">Add new banner</h2>
-                <form className="w-50" onSubmit={handleSubmit}>
+                <form className="w-50" onSubmit={handleSubmit} encType="multipart/form-data">
                     <div class="input-group mb-3">
                         <span class="input-group-text fs-5" id="inputGroup-sizing-default">
                             Name
@@ -95,17 +106,13 @@ const Banners = () => {
                         />
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text fs-5" id="inputGroup-sizing-default">
-                            Image URL
-                        </span>
                         <input
-                            value={banner.image}
                             name="image"
-                            type="text"
+                            type="file"
                             className="form-control fs-5"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default"
-                            onChange={handleInputChange}
+                            onChange={handleFileSelect}
                         />
                     </div>
                     <button

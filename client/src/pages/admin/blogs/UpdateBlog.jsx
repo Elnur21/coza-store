@@ -17,8 +17,16 @@ const UpdateBlog = () => {
         }));
     };
     const navigate = useNavigate();
+    const [selectedFile, setSelectedFile] = useState(null);
+    const handleFileSelect = (e) => {
+        setSelectedFile(e.target.files[0]);
+    };
     const handleSubmit = () => {
-        updateBlog(blog);
+        const formData = new FormData();
+        formData.append('imageFile', selectedFile);
+        formData.append('name', blog.name);
+        formData.append('description', blog.description);
+        updateBlog(formData, blog._id);
         navigate("/admin/blogs");
         window.location.reload();
     };
@@ -27,7 +35,7 @@ const UpdateBlog = () => {
         <div className="d-flex justify-content-center py-5">
             <div className="w-75 d-flex align-items-center flex-column gap-3">
                 <h2 className="text-center fw-bold display-6">Blog information</h2>
-                <form className="w-75" onSubmit={handleSubmit}>
+                <form className="w-75" onSubmit={handleSubmit} encType="multipart/form-data">
                     <div class="input-group mb-3">
                         <span class="input-group-text fs-5" id="inputGroup-sizing-default">
                             Name
@@ -60,13 +68,12 @@ const UpdateBlog = () => {
                             Image URL
                         </span>
                         <input
-                            value={blog.image}
                             name="image"
-                            type="text"
+                            type="file"
                             className="form-control fs-5"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default"
-                            onChange={handleInputChange}
+                            onChange={handleFileSelect}
                         />
                     </div>
                     <button

@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MyImageGallery from "../../pages/user/shop/imageGalery/MyImageGallery";
 import { Link } from "react-router-dom";
 import { faFacebookF, faGooglePlusG, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { baseUrl } from "../../api/base_url";
 export default function ShopModal(props) {
+  const imageUrl = baseUrl + '/uploads/' + props.myOrder.image;
   const [count1, setCount1] = useState(1);
   return (
     <div
@@ -23,7 +25,7 @@ export default function ShopModal(props) {
         </div>
         <div className="w-75 bg-white px-3 py-5 row">
           <div className="col-lg-7">
-            <MyImageGallery basicImage={props.myOrder.image} />
+            <MyImageGallery basicImage={imageUrl} />
           </div>
           <div className="col-lg-5 pt-1">
             <h4>{props.myOrder.name}</h4>

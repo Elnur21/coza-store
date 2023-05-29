@@ -1,9 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Banner from './Banner'
 import SlideShow from './SlideShow'
-import man_banner from "../../../assets/image/man-banner.webp"
-import woman_banner from "../../../assets/image/women-banner.webp"
-import accesories_banner from "../../../assets/image/accesories-banner.webp"
 import Shop from '../shop/Shop'
 import { BannerContext } from '../../../context/BannerContext'
 
@@ -22,7 +19,7 @@ export default function Dashboard() {
         <div className='row w-75 justify-content-lg-between justify-content-md-center justify-content-sm-center mt-5'>
           {
             bannerData.map(banner => (
-              <Banner info={banner.description} name={banner.name} imgSource={banner.image} />
+              <Banner info={banner.description} name={banner.name} imgSource={`/uploads/${banner.image}`} />
             ))
           }
         </div>
