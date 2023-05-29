@@ -28,6 +28,7 @@ import Slides from "../pages/admin/slides/Slides";
 import UpdateSlide from "../pages/admin/slides/UpdateSlides";
 import Blogs from "../pages/admin/blogs/Blogs";
 import UpdateBlog from "../pages/admin/blogs/UpdateBlog";
+import FAQs from "../pages/general/FAQs";
 export const ROUTES = [
   {
     path: "/",
@@ -72,6 +73,10 @@ export const ROUTES = [
       {
         path: "login/forgetPassword",
         element: <LoginForgetPassword />,
+      },
+      {
+        path: "faqs",
+        element: <FAQs />,
       },
       {
         path: "*",

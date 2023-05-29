@@ -1,7 +1,4 @@
 import React from 'react'
-import featured1 from "../../../assets/image/featureed1.webp"
-import featured2 from "../../../assets/image/featured2.webp"
-import featured3 from "../../../assets/image/featured3.webp"
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -26,13 +23,13 @@ export default function BlogRightPart() {
                 <h4 className='fw-bold'>Featured Products</h4>
                 <ul className='p-0 mt-4' type="none">
                     <li>
-                        <Featured blogLink="blog" featureImage={featured1} featureHeader="White Shirt With Pleat Detail Back" featurePrice="$19.00" />
+                        <Featured blogLink="blog" featureImage={"blog-02.jpg"} featureHeader="White Shirt With Pleat Detail Back" featurePrice="$19.00" />
                     </li><br />
                     <li>
-                        <Featured blogLink="blog" featureImage={featured2} featureHeader="Converse All Star Hi Black Canvas" featurePrice="$39.00" />
+                        <Featured blogLink="blog" featureImage={"blog-01.jpg"} featureHeader="Converse All Star Hi Black Canvas" featurePrice="$39.00" />
                     </li><br />
                     <li>
-                        <Featured blogLink="blog" featureImage={featured3} featureHeader="Nixon Porter Leather Watch In Tan" featurePrice="$17.00" />
+                        <Featured blogLink="blog" featureImage={"blog-03.jpg"} featureHeader="Nixon Porter Leather Watch In Tan" featurePrice="$17.00" />
                     </li>
                 </ul>
             </div><br /><br />
