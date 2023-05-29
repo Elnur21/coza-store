@@ -3,11 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "../../../assets/style/blog.css"
+import { baseUrl } from '../../../api/base_url'
 export default function BlogArticle(props) {
+    const imageUrl = baseUrl + '/uploads/' + props.articleImage;
+
     return (
         <div className='position-relative'>
             <Link to={props.articleLink} className='text-decoration-none'>
-                <img src={props.articleImage} alt="article_image" className='w-100' />
+                <img src={imageUrl} alt="article_image" className='w-100' />
                 <div className='position-absolute top-0 mt-4 ms-4  start-0 bg-white text-dark article-date text-center p-2'>
                     <span className='h1 fw-bold'>
                         {props.day}

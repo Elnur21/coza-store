@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import BlogRightPart from "./BlogRightPart";
 import { BlogContext } from "../../../context/BlogContext";
+import { baseUrl } from "../../../api/base_url";
 
 export default function BlogContent() {
   const { blogs, commentToBlog } = useContext(BlogContext);
@@ -12,7 +13,8 @@ export default function BlogContent() {
     setBlog(blogs.filter((blog) => blog._id === id)[0]);
   }, [blogs]);
   const date = new Date(blog.dateCreated);
-
+  const imageUrl = baseUrl + '/uploads/' + blog.image;
+  
   return (
     <section className="d-flex justify-content-center my-5 flex-wrap">
       <div className="d-flex justify-content-start w-75 px-4 text-muted">
@@ -28,7 +30,7 @@ export default function BlogContent() {
       <div className="w-75 d-flex mt-5 gap-4 flex-lg-row flex-column">
         <div className="col-lg-8 col-md-12 col-sm-12 col-12 position-relative">
           <span className="text-decoration-none">
-            <img src={blog.image} alt="article_image" className="w-100" />
+            <img src={imageUrl} alt="article_image" className="w-100" />
             <div className="position-absolute top-0 mt-4 ms-4  start-0 bg-white text-dark article-date text-center p-2">
               <span className="h1 fw-bold">{date.getDate()}</span> <br />
               <span>

@@ -35,7 +35,7 @@ const UpdateBlog = () => {
         <div className="d-flex justify-content-center py-5">
             <div className="w-75 d-flex align-items-center flex-column gap-3">
                 <h2 className="text-center fw-bold display-6">Blog information</h2>
-                <form className="w-75" onSubmit={handleSubmit}>
+                <form className="w-75" onSubmit={handleSubmit} encType="multipart/form-data">
                     <div class="input-group mb-3">
                         <span class="input-group-text fs-5" id="inputGroup-sizing-default">
                             Name

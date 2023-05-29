@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { baseUrl } from '../../../api/base_url';
 
 export default function Banner(props) {
-    const imageUrl = 'http://localhost:8080' + props.imgSource;
+    const imageUrl = baseUrl + props.imgSource;
 
     return (
         <Link to='/shop' className='row text-decoration-none border px-4 col-lg-4 col-md-5 col-sm-12 my-3 me-md-5 me-sm-0 me-lg-0 banner' style={{ backgroundImage: "url(" + imageUrl + ")", backgroundSize: "100% 100%", height: "270px" }}>
