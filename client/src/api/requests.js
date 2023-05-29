@@ -15,8 +15,8 @@ export const getCards = async () => {
 export const deleteCardById = async (id) => {
   return await axios.delete(`${baseUrl}/${id}`);
 };
-export const updateCardById = async (card) => {
-  return await axios.put(`${baseUrl}/${card._id}`, card);
+export const updateCardById = async (card, id) => {
+  return await axios.put(`${baseUrl}/${id}`, card);
 };
 export const createCard = async (formData) => {
   await axios
@@ -118,8 +118,8 @@ export const getBanners = async () => {
 export const deleteBannerById = async (id) => {
   return await axios.delete(`${baseUrl}/banner/${id}`);
 };
-export const updateBannerById = async (banner) => {
-  return await axios.put(`${baseUrl}/banner/${banner._id}`, banner);
+export const updateBannerById = async (banner, id) => {
+  return await axios.put(`${baseUrl}/banner/${id}`, banner);
 };
 export const createBanner = async (formData) => {
   await axios
@@ -146,8 +146,8 @@ export const getSlides = async () => {
 export const deleteSlideById = async (id) => {
   return await axios.delete(`${baseUrl}/slide/${id}`);
 };
-export const updateSlideById = async (slide) => {
-  return await axios.put(`${baseUrl}/slide/${slide._id}`, slide);
+export const updateSlideById = async (slide, id) => {
+  return await axios.put(`${baseUrl}/slide/${id}`, slide);
 };
 export const createSlide = async (formData) => {
   await axios
@@ -180,6 +180,37 @@ export const updateContactById = async (contact) => {
 export const createContact = async (formData) => {
   await axios
     .post(`${baseUrl}/contact`, formData)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+//blog
+export const getBlogs = async () => {
+  return await axios
+    .get(`${baseUrl}/blog`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+export const deleteBlogById = async (id) => {
+  return await axios.delete(`${baseUrl}/blog/${id}`);
+};
+export const updateBlogById = async (blog, id) => {
+  return await axios.put(`${baseUrl}/blog/${id}`, blog);
+};
+export const addComment = async (blog) => {
+  return await axios.put(`${baseUrl}/blog/add/${blog._id}`, blog);
+};
+export const createBlog = async (formData) => {
+  await axios
+    .post(`${baseUrl}/blog`, formData)
     .then((response) => {
       console.log(response.data);
     })

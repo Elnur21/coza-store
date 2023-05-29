@@ -8,8 +8,8 @@ const BannerContextProvider = ({ children }) => {
     const deleteBanner = async (id) => {
         await deleteBannerById(id);
     }
-    const updateBanner = async (banner) => {
-        await updateBannerById(banner);
+    const updateBanner = async (banner,id) => {
+        await updateBannerById(banner,id);
     }
     const [banners, setBanners] = useState([]);
     useEffect(() => {

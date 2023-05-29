@@ -1,5 +1,4 @@
 .article-date{
-    bottom: 100px;
-    left: 10px;
-    opacity: .8;
+    opacity: .7;
+    height: fit-content;
 }

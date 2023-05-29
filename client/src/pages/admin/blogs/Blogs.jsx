@@ -1,22 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { BannerContext } from '../../../context/BannerContext';
-import { Link, useNavigate } from 'react-router-dom';
-import { faRemove, faUpload } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { createBanner } from '../../../api/requests';
+import React, { useContext, useEffect, useState } from "react";
+import { BlogContext } from "../../../context/BlogContext";
+import { Link, useNavigate } from "react-router-dom";
+import { faRemove, faUpload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { createBlog } from "../../../api/requests";
 
-const Banners = () => {
-    const { banners, deleteBanner } = useContext(BannerContext);
-    const [bannersData, setBannersData] = useState([]);
+const Blogs = () => {
+    const { blogs, deleteBlog } = useContext(BlogContext);
+    const [blogsData, setBlogsData] = useState([]);
     useEffect(() => {
-        setBannersData(banners);
-    }, [banners])
+        setBlogsData(blogs);
+    }, [blogs]);
 
-    const [banner, setBanner] = useState({});
+    const [blog, setBlog] = useState({});
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setBanner((prevBanner) => ({
-            ...prevBanner,
+        setBlog((prevBlog) => ({
+            ...prevBlog,
             [name]: value,
         }));
     };
@@ -28,61 +28,68 @@ const Banners = () => {
     const handleSubmit = () => {
         const formData = new FormData();
         formData.append('imageFile', selectedFile);
-        formData.append('name', banner.name);
-        formData.append('description', banner.description);
-        createBanner(formData);
-        navigate("/admin/banners");
+        formData.append('name', blog.name);
+        formData.append('description', blog.description);
+        createBlog(formData);
+        navigate("/admin/blogs");
         window.location.reload();
     };
-    if(bannersData.length ===0){
-        return <div className='text-center fs-3 py-5'>There are not any banners</div>
+    if(blogsData.length ===0){
+        return <div className='text-center fs-3 py-5'>There are not any blogs</div>
     }
-
     return (
         <div className="d-flex align-items-center flex-column py-5">
-            <div className="w-50">
-                <h2 className='text-center'>All Banners</h2>
+            <div className="w-75">
+                <h2 className="text-center">All Blogs</h2>
                 <table class="table my-5">
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Description</th>
-                            <th scope="col" colSpan={3}>Image URL</th>
+                            <th scope="col" colSpan={3}>
+                                Image URL
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            bannersData.map(banner => (
-                                <tr key={banner._id}>
-                                    <th scope="row">{banner.name}</th>
-                                    <th scope="row">{banner.description}</th>
-                                    <th scope="row">{banner.image}</th>
-                                    <td align='end'>
-                                        <Link className="btn btn-warning text-white" to={`/admin/banners/${banner._id}`}>
-                                            <FontAwesomeIcon icon={faUpload} />
-                                        </Link>
-                                    </td>
-                                    <td align='end'>
-                                        <button className="btn btn-danger" onClick={() => {
-                                            deleteBanner(banner._id)
+                        {blogsData.map((blog) => (
+                            <tr key={blog._id}>
+                                <th scope="row">{blog.name}</th>
+                                <th scope="row">{`${blog.description.substring(0, 100)}...`}</th>
+                                <th scope="row">{blog.image}</th>
+                                <td align="end">
+                                    <Link
+                                        className="btn btn-warning text-white"
+                                        to={`/admin/blogs/${blog._id}`}
+                                    >
+                                        <FontAwesomeIcon icon={faUpload} />
+                                    </Link>
+                                </td>
+                                <td align="end">
+                                    <button
+                                        className="btn btn-danger"
+                                        onClick={() => {
+                                            deleteBlog(blog._id);
                                             window.location.reload();
-                                        }}><FontAwesomeIcon icon={faRemove} /></button>
-                                    </td>
-                                </tr>
-                            ))
-                        }
+                                        }}
+                                    >
+                                        <FontAwesomeIcon icon={faRemove} />
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
             <div className="w-75 d-flex align-items-center flex-column gap-3 mt-5">
-                <h2 className="text-center fw-bold display-6">Add new banner</h2>
-                <form className="w-50" onSubmit={handleSubmit} encType="multipart/form-data">
+                <h2 className="text-center fw-bold display-6">Add new blog</h2>
+                <form className="w-75" onSubmit={handleSubmit} encType="multipart/form-data">
                     <div class="input-group mb-3">
                         <span class="input-group-text fs-5" id="inputGroup-sizing-default">
                             Name
                         </span>
                         <input
-                            value={banner.name}
+                            value={blog.name}
                             name="name"
                             type="text"
                             className="form-control fs-5"
@@ -95,15 +102,15 @@ const Banners = () => {
                         <span class="input-group-text fs-5" id="inputGroup-sizing-default">
                             Description
                         </span>
-                        <input
-                            value={banner.description}
+                        <textarea
+                            value={blog.description}
                             name="description"
                             type="text"
                             className="form-control fs-5"
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default"
                             onChange={handleInputChange}
-                        />
+                        ></textarea>
                     </div>
                     <div class="input-group mb-3">
                         <input
@@ -125,6 +132,6 @@ const Banners = () => {
             </div>
         </div>
     );
-}
+};
 
-export default Banners
+export default Blogs;

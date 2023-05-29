@@ -3,7 +3,7 @@ import React from 'react'
 
 const Numbers = ({ count, name, icon,color }) => {
     return (
-        <div className={`row bg-${color} text-white w-100 p-3 rounded-3 shadow-lg`}>
+        <div className={`row bg-${color} text-white p-3 rounded-3 shadow-lg`}>
             <div className="col-6 display-3 d-flex justify-content-center align-items-center">
                 <FontAwesomeIcon icon={icon} />
             </div>

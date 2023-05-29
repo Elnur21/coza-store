@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { baseUrl } from '../../../api/base_url';
 
 export default function Featured(props) {
+    const imageUrl = baseUrl + '/uploads/' + props.featureImage;
     return (
         <div className='d-flex justify-content-between'>
             <div className='col-lg-4 col-md-4 col-sm-4'>
-               <Link to={`/${props.blogLink}`} className={props.imageWidth} onClick={props.click}><img src={props.featureImage} alt="feature_product" className={props.imageWidth}/></Link>
+                <Link to={`/${props.blogLink}`} className={props.imageWidth} onClick={props.click}><img src={imageUrl} alt="feature_product" className={props.imageWidth} /></Link>
             </div>
             <div className='col-lg-7 col-md-6 col-sm-7 py-2'>
                 <Link to="/blog" className='text-decoration-none text-dark'><h6>{props.featureHeader}</h6></Link>

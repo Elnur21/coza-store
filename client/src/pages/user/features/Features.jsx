@@ -1,15 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import FeatureTableContent from "./FeatureTableContent";
-import table1 from "../../../assets/image/table1.webp";
-import table2 from "../../../assets/image/table2.webp";
 import { CardContext } from '../../../context/CardContext';
 
 export default function Features() {
   const { myData } = useContext(CardContext);
   return (
-    <div>
-      <section className="d-flex justify-content-center mt-5 flex-wrap">
+    <section className="pb-5">
+      <div className="d-flex justify-content-center my-5 pb-5 flex-wrap">
         <div className="d-flex justify-content-start w-75 text-muted">
           <Link to="/" className="text-decoration-none text-muted pe-2">
             Home
@@ -37,16 +35,6 @@ export default function Features() {
                   </tr>
                 </thead>
                 <tbody>
-                  <FeatureTableContent
-                    tableImage={table1}
-                    imgName="Fresh Strawberries"
-                    price="36"
-                  />
-                  <FeatureTableContent
-                    tableImage={table2}
-                    imgName="Lightweight Jacket"
-                    price="16"
-                  />
                   {myData.map((cartItem) => (
                     <FeatureTableContent
                       key={cartItem.id}
@@ -68,14 +56,14 @@ export default function Features() {
                   />{" "}
                   <button
                     type="submit"
-                    className="btn rounded-pill bg-secondary text-dark shadow-none d-flex align-items-center gap-1"
+                    className="btn rounded-pill bg-secondary text-dark shadow-none d-flex align-items-center gap-1  text-white"
                   >
                     <span>APPLY</span> <span>COUPON</span>
                   </button>
                 </div>
                 <button
                   type="reset"
-                  className="btn rounded-pill bg-secondary text-dark shadow-none d-flex align-items-center gap-1 my-2"
+                  className="btn rounded-pill bg-secondary text-dark shadow-none d-flex align-items-center gap-1 my-2  text-white"
                 >
                   <span>UPDATE</span> <span>CART</span>
                 </button>
@@ -83,17 +71,17 @@ export default function Features() {
             </div>
           </div>
           <div className="col-lg-4 border border-secondary py-4 px-5  col-md-12 col-sm-12">
-            <h5 className="fw-bold mt-2">CART TOTALS</h5> <br />
+            <h5 className="fw-bold mt-2 pb-3">CART TOTALS</h5>
             <p className="d-flex justify-content-between fs-6">
               <div className="col-lg-3">Subtotal:</div>
               <div className="col-lg-7">
                 $
-                {79.65 +
-                  (myData.length > 0
+                {
+                  myData.length > 0
                     ? myData
                       .map((datum) => parseFloat(datum.price))
                       .reduce((a, b) => a + b)
-                    : 0.0)}
+                    : 0.0}
               </div>
             </p>
             <hr />
@@ -131,27 +119,26 @@ export default function Features() {
                   />
                   <button
                     type="reset"
-                    className="btn rounded-pill bg-secondary text-dark shadow-none w-100"
+                    className="btn rounded-pill bg-secondary text-dark shadow-none w-100 text-white"
                   >
                     UPDATE TOTALS
                   </button>
                 </form>
               </div>
-            </div>{" "}
+            </div>
             <hr />
-            <p className="d-flex justify-content-between fs-6">
+            <p className="d-flex justify-content-between fs-6 pb-4">
               <div className="col-lg-3">Total:</div>
               <div className="col-lg-7">
                 $
-                {79.65 +
-                  (myData.length > 0
+                {
+                  myData.length > 0
                     ? myData
-                      .map((datum) => parseFloat(datum.price))
+                      .map(d => parseFloat(d.price))
                       .reduce((a, b) => a + b)
-                    : 0.0)}
+                    : 0.0}
               </div>
-            </p>{" "}
-            <br />
+            </p>
             <button
               type="submit"
               className="btn rounded-pill bg-dark text-white shadow-none w-100 py-2 mb-4 d-flex justify-content-center"
@@ -160,14 +147,7 @@ export default function Features() {
             </button>
           </div>
         </div>
-      </section>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-    </div>
+      </div>
+    </section>
   );
 }

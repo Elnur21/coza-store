@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { baseUrl } from '../../../api/base_url';
 
 export default function Banner(props) {
+    const imageUrl = baseUrl + props.imgSource;
+
     return (
-        <Link to='/shop' className='row text-decoration-none border px-4 col-lg-4 col-md-5 col-sm-12 my-3 me-md-5 me-sm-0 me-lg-0 banner' style={{ backgroundImage: "url(" + props.imgSource + ")", backgroundSize: "100% 100%", height: "270px" }}>
+        <Link to='/shop' className='row text-decoration-none border px-4 col-lg-4 col-md-5 col-sm-12 my-3 me-md-5 me-sm-0 me-lg-0 banner' style={{ backgroundImage: "url(" + imageUrl + ")", backgroundSize: "100% 100%", height: "270px" }}>
             <div className='col-lg-6 text-start'>
                 <h3 className='text-dark fw-bold pt-4'>{props.name}</h3>
                 <p className='text-secondary pb-5'>{props.info}</p>
@@ -11,7 +14,8 @@ export default function Banner(props) {
                     <span>SHOP</span> <span>NOW</span>
                 </button>
             </div>
-            <div className='col-lg-6'></div>
+            <div className='col-lg-6'>
+            </div>
         </Link>
     )
 }

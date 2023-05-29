@@ -9,7 +9,9 @@ const Cards = () => {
         setCardsData(basicData);
     }, [basicData])
 
-
+    if(cardsData.length ===0){
+        return <div className='text-center fs-3 py-5'>There are not any cards</div>
+    }
     return (
         <div className="d-flex justify-content-center py-5">
             <div className="w-75">
