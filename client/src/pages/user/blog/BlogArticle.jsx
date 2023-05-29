@@ -29,7 +29,7 @@ export default function BlogArticle(props) {
                     StreetStyle, Fashion, Couple | {props.commentCount} Comments</div>
                 <div className='col-lg-4 col-md-4 col-sm-12 d-flex justify-content-end'>
                     <Link to={props.articleLink} className="text-decoration-none text-dark">
-                        CONTINUE READING  <FontAwesomeIcon icon={faArrowRight} />
+                        Read more  <FontAwesomeIcon icon={faArrowRight} />
                     </Link>
                 </div>
             </div>
