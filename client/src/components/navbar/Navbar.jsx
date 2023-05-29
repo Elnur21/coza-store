@@ -126,7 +126,7 @@ export default function Navbar() {
                     <li className="py-2 border-0 border-start border-secondary px-3">
                       <Link
                         className="text-decoration-none text-secondary"
-                        to="/"
+                        to="/faqs"
                       >
                         Help & FAQs
                       </Link>
@@ -149,7 +149,11 @@ export default function Navbar() {
                               "you have logged out.",
                               "success"
                             );
-                            setUser({ role: "unlogged" });
+                            setUser({
+                              role: "unlogged",
+                              cart: [],
+                              likes: []
+                            })
                           }}
                         >
                           Log out
@@ -337,7 +341,7 @@ export default function Navbar() {
                 <li className="py-2 border border-secondary px-3 d-flex align-items-center">
                   <Link
                     className="text-decoration-none text-secondary"
-                    to="/admin"
+                    to="/faqs"
                   >
                     Help & FAQs
                   </Link>
@@ -360,7 +364,11 @@ export default function Navbar() {
                           "you have logged out.",
                           "success"
                         );
-                        setUser({ role: "unlogged" });
+                        setUser({
+                          role: "unlogged",
+                          cart: [],
+                          likes: []
+                        })
                       }}
                     >
                       Log out

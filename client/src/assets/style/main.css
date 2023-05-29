@@ -124,3 +124,13 @@ input::-webkit-inner-spin-button {
     transform: rotate(360deg);
   }
 }
+.footer-icons a{
+  transition: .5s;
+}
+.footer-icons a:hover{
+  transform: scale(1.5);
+  color: blue !important;
+}
+footer p a:hover{
+  color: blue !important;
+}
