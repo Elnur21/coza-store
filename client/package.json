@@ -33,7 +33,7 @@
     "socket.io-client": "^4.6.1",
     "sweetalert": "^2.1.2",
     "swiper": "^11.0.7",
-    "web-vitals": "^3.5.2",
+    "web-vitals": "^4.2.1",
     "yup": "^1.1.1"
   },
   "scripts": {
