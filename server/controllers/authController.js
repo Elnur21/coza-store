@@ -69,7 +69,7 @@ exports.updateUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: { $eq: email } });
     if (user) {
       bcrypt.compare(password, user.password, (err, same) => {
         if (err) {
