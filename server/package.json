@@ -20,6 +20,7 @@
     "mongoose": "^8.8.3",
     "multer": "^2.0.1",
     "nodemon": "^2.0.22",
-    "socket.io": "^4.6.1"
+    "socket.io": "^4.6.1",
+    "express-rate-limit": "^8.3.2"
   }
 }
